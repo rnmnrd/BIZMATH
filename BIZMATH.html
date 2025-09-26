@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIZMATH | Basic Business Mathematics for Grade 11 Learners</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 110px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #e6f0ff;
+            display: flex;
+            color: #333;
+        }
+        .sidebar {
+            width: 220px;
+            background: #1a2634;
+            color: #fff;
+            min-height: 100vh;
+            padding: 32px 18px 32px 18px;
+            box-sizing: border-box;
+            border-right: 4px solid #2a4d69;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 200;
+        }
+        .sidebar h2 {
+            color: #ffe066;
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 1.2rem;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: block;
+        }
+        .sidebar li {
+            margin-bottom: 14px;
+            display: block;
+        }
+        .sidebar button {
+            width: 100%;
+            background: #2a4d69;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 0;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0;
+            transition: background 0.2s, color 0.2s;
+            font-family: 'Poppins', Arial, sans-serif;
+            text-align: center;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .sidebar button:hover {
+            background: #4b86b4;
+            color: #ffe066;
+        }
+        .material-symbols-rounded {
+            font-size: 20px;
+            vertical-align: middle;
+        }
+        .main-content {
+            margin-left: 220px;
+            width: 100%;
+            padding: 0 30px 30px 30px;
+            box-sizing: border-box;
+            margin-top: 100px;
+        }
+        header {
+            width: 100vw;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 100;
+            background: #1a2634;
+            color: #fff;
+            padding: 24px 30px 18px 250px;
+            border-radius: 0 0 12px 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            box-sizing: border-box;
+            justify-content: space-between;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        header img {
+            height: 48px;
+            width: 48px;
+            border-radius: 8px;
+            background: #fff;
+            object-fit: contain;
+        }
+        header h1 {
+            color: #fff;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        .header-nav {
+            display: flex;
+            gap: 10px;
+        }
+        .header-nav a button {
+            background: #2a4d69;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            font-family: 'Poppins', Arial, sans-serif;
+            text-align: center;
+            font-weight: 600;
+        }
+        .header-nav a button:hover {
+            background: #4b86b4;
+            transform: translateY(-2px) scale(1.05);
+        }
+        .main-content section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-top:#4b86b4 6px solid;
+        }
+        .section-anchor {
+            position: relative;
+            scroll-margin-top: 110px;
+        }
+        h2 {
+            color: #1a2634;
+            font-family: 'Poppins';
+            text-align: center;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+        .inline-div {
+            display: block;
+            text-align: center;
+        }
+        #h02 {
+            color: #1a2634;
+            font-family: 'Poppins';
+            text-align: center;
+            display: inline-block;
+            gap: 20px;
+        }
+        @media (max-width: 800px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 0 10px 20px 10px;
+            }
+            header {
+                padding-left: 30px;
+                border-radius: 0;
+            }
+        }
+        .container {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .section {
+            display: none;
+            margin-top: 20px;
+        }
+        .section.active {
+            display: block;
+        }
+        .section button {
+            background: #2a4d69;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            margin-top: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .section button:hover {
+            background: #4b86b4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(42,77,105,0.06);
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #b0c4de;
+            padding: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        th {
+            background: #e6f0ff;
+            color: #1a2634;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background: #f7fbff;
+        }
+        .stacked-fraction {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: normal;
+            vertical-align: middle;
+            text-align: center;
+            width: 1.6em;
+            font-size: 1em;
+            padding: 4px;
+            width: fit-content;
+            max-width: 100%;   
+        }
+        .numerator {
+            text-align: center;
+            border-bottom: 1px solid #1a2634;
+            display: inline;
+            padding: 0 2px;
+            white-space: nowrap;
+        }
+        .denominator {
+            text-align: center;
+            display: inline;
+            padding: 0 2px;
+            white-space: nowrap;
+        }
+        .numerator2 {
+            text-align: center;
+            border-bottom: 1.5px solid #1a2634;
+            font-size: 16px;
+            max-width: 100%;
+            display: block;
+            white-space: nowrap;
+            overflow: visible;
+            padding: 1px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .denominator2 {
+            text-align: center;
+            font-size: 16px;
+            max-width: 100%;
+            display: block;
+            white-space: nowrap;
+            overflow: visible;
+            padding: 1px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .highlight {
+            background: #e6f7ff;
+            border-left: 4px solid #4b86b4;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <aside class="sidebar" aria-label="Main Navigation">
+        <h2>Lessons</h2>
+        <ul>
+            <li><button onclick="location.href='#interest'">Interest</button></li>
+            <li><button onclick="location.href='#annuities'">Annuities</button></li>
+            <li><button onclick="location.href='#stocks'">Stocks</button></li>
+            <li><button onclick="location.href='#bonds'">Bonds</button></li>
+            <li><button onclick="location.href='#loans'">Loans</button></li>
+            <li><button onclick="location.href='#review'">Assessment</button></li>
+            <li><button onclick="location.href='#resources'">Resources</button></li>
+        </ul>
+    </aside>
+    <header>
+        <div class="header-left">
+            <img src="images/favicon.png" alt="BIZMATH Logo">
+            <h1>BIZMATH</h1>
+        </div>
+        <nav class="header-nav">
+            <a href="#home"><button class="main-btn">🏠 Home</button></a>
+            <a href="about.html"><button type="button">ℹ️ About Us</button></a>
+            <a href="calculator.html"><button type="button">🧮 Calculator</button></a>
+        </nav>
+    </header>
+<!--INTRODUCTION OF BUSINESS MATHEMATICS-->
+<div class="main-content">
+    <section id="introduction">
+        <h2>Business Mathematics</h2>
+            <p style="text-align: justify;"><strong>Business Mathematics</strong> is a specialized area of General Mathematics used by commercial enterprises to record and manage business operations. Commercial organizations use mathematics in accounting, inventory management, marketing, sales forecasting, and financial analysis.</p>
+    </section>
+<!-------SIMPLE INTEREST------->
+    <section id="interest" class="section-anchor">
+        <h2>Simple Interest</h2>
+        <div class="container">
+        <div class="highlight">
+        <h3>Definition of Terms</h3></div>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>Principal (<b>P</b>)</td>
+                    <td>The amount borrowed or invested</td>
+                </tr>
+                <tr>
+                    <td>Simple Interest (<b>I<sub>S</sub></b>)</td>
+                    <td>The payment for the use of borrowed money or the amount earned on invested money</td>
+                </tr>
+                <tr>
+                    <td>Rate (<b>r</b>)</td>
+                    <td>The fractional part of the principal that is paid on loan or investment</td>
+                </tr>
+                <tr>
+                    <td>Time (<b>t</b>)</td>
+                    <td>The number of years for which the money is borrowed or invested</td>
+                </tr>
+                <tr>
+                    <td>Future Value (<b>F</b>)</td>
+                    <td>The sum of the principal and the interest earned within the time</td>
+                </tr>
+            </table>
+        </div>
+<!--SIMPLE INTEREST FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Simple Interest (I<sub>S</sub>)</h3></div>
+            <h2>$$ I_{S}=Prt$$</h2>
+            <p>where:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>P</b> = Principal</li>
+                    <li><b>r</b> = Rate</li>
+                    <li><b>t</b> = Time in years</li>
+                </ul>
+                <h3>Examples</h3>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;"><em>Principal</em> (<b>P</b>) = 5 200<br><em>Rate</em> (<b>r</b>) = 6% or 0.06<br><em>Time</em> (<b>t</b>) = 2 years</td>
+                        <td style="text-align: left;"><em>Principal</em> (<b>P</b>) = 16 000<br><em>Rate</em> (<b>r</b>) = 5% or 0.05<br><em>Time</em> (<b>t</b>) = 18 months</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Simple Interest (<b>I<sub>S</sub></b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td colspan="2" style="text-align: center;">$$I_{S}=Prt$$</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;"><b>I<sub>S</sub></b> = 5 200(0.06)(2)<br><b>I<sub>S</sub></b> = 624</td>
+                        <td style="text-align: left;"><b>I<sub>S</sub></b> = 16 000(0.05)(1.5)<br><b>I<sub>S</sub></b> = 12 000</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The interest earned is <b>₱624</b></td>
+                        <td style="text-align: left;">The interest earned is <b>₱12 000</b></td>
+                    </tr>
+                </table>
+                </div>
+<!--FUTURE VALUE FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Future Value (F)</h3></div>
+            <div class="inline-div">
+            <h2 id="h02">$$F=P+I_{S}$$</h2>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 id="h02">$$F=P\begin{pmatrix}1+rt\end{pmatrix}$$</h2>
+            </div>
+            <p>where:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>P</b> = Principal</li>
+                    <li><b>I<sub>S</sub></b> = Simple Interest</li>
+                    <li><b>r</b> = Rate</li>
+                    <li><b>t</b> = Time in years</li>
+                </ul>
+                <h3>Examples</h3>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;"><em>Principal</em> (<b>P</b>) = 10 000<br><em>Simple Interest</em> (<b>I<sub>S</sub></b>) = 5 000</td>
+                        <td style="text-align: left;"><em>Principal</em> (<b>P</b>) = 7 000<br><em>Rate</em> (<b>r</b>) = 4% or 0.04<br><em>Time</em> (<b>t</b>) = 8 years</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Future Value (<b>F</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td style="text-align: center;">$$F=P+I_{S}$$</td>
+                        <td style="text-align: center;">$$F=P\begin{pmatrix}1+rt\end{pmatrix}$$</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=10&space;000&plus;5&space;000" title="F=10 000+5 000" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=15&space;000" title="F=15 000" />
+                        </td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=7000\begin{pmatrix}1&plus;0.04\left(8\right)\end{pmatrix}" title="F=7000\begin{pmatrix}1+0.04\left(8\right)\end{pmatrix}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=7000\begin{pmatrix}1&plus;0.32\end{pmatrix}" title="F=7000\begin{pmatrix}1+0.32\end{pmatrix}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=7000\begin{pmatrix}1.32\end{pmatrix}" title="F=7000\begin{pmatrix}1.32\end{pmatrix}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=9&space;240" title="F=9 240" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The future value is <b>₱15 000</b></td>
+                        <td style="text-align: left;">The future value is <b>₱9 240</b></td>
+                    </tr>
+                </table>
+                </div>
+<!--PRINCIPAL FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Principal (P)</h3></div>
+            <div class="inline-div">
+            <h2 id="h02">$$P=F-I_{S}$$</h2>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <h2 id="h02">$$P=\frac{I_{S}}{rt}$$</h2>
+            </div>
+            <p>where:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>F</b> = Future Value</li>
+                    <li><b>I<sub>S</sub></b> = Simple Interest</li>
+                    <li><b>r</b> = Rate</li>
+                    <li><b>t</b> = Time in years</li>
+                </ul>
+                <h3>Examples</h3>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;"><em>Future Value</em> (<b>F</b>) = 28 300<br><em>Simple Interest</em> (<b>I<sub>S</sub></b>) = 2 345</td>
+                        <td style="text-align: left;"><em>Simple Interest</em> (<b>I<sub>S</sub></b>) = 600<br><em>Rate</em> (<b>r</b>) = 6%<br><em>Time</em> (<b>t</b>) = 2 years</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Principal (<b>P</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td style="text-align: center;">$$P=F-I_{S}$$</td>
+                        <td style="text-align: center;">$$P=\frac{I_{S}}{rt}$$</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=28&space;300-2&space;345" title="P=28 300-2 345" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=25&space;955" title="P=25 955" /> 
+                        </td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{600}{0.06\left(12\right)}" title="P=\frac{600}{0.06\left(12\right)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{600}{0.12}" title="P=\frac{600}{0.12}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=5&space;000" title="P=5 000" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The principal is <b>₱25 955</b></td>
+                        <td style="text-align: left;">The principal is <b>₱5 000</b></td>
+                    </tr>
+                </table>
+                </div>
+<!---TIME FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+            <h3>Solving for the Time (t)</h3></div>
+            <h2>$$t=\frac{I_{S}}{Pr}$$</h2>
+            <p>where:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>I<sub>S</sub></b> = Simple Interest</li>
+                    <li><b>P</b> = Principal</li>
+                    <li><b>r</b> = Rate</li>
+                </ul>
+                <h3>Examples</h3>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th colspan="2"><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;"><em>Simple Interest</em> (<b>I<sub>S</sub></b>) = 25 000<br><em>Principal</em> (<b>P</b>) = 50 000<br><em>Rate</em> (<b>r</b>) = 2%</td>
+                        <td style="text-align: left;" colspan="2"><em>Future Value</em> (<b>F</b>) = 15 330<br><em>Principal</em> (<b>P</b>) = 11 000<br><em>Rate</em> (<b>r</b>) = 8.25%</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="3" style="text-align: center;">Time <em>in years</em> (<b>t</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td style="text-align: center;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{I_{S}}{Pr}" title="t=\frac{I_{S}}{Pr}" /></td>
+                        <td style="text-align: center;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=F-P" title="I_{S}=F-P" /></td>
+                        <td style="text-align: center;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{I_{S}}{Pr}" title="t=\frac{I_{S}}{Pr}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;"><b>t</b> = 
+                        <span class="stacked-fraction">
+                        <div class="numerator2">25 000</div>
+                        <div class="denominator2">50 000(0.02)</div>
+                        </span><br><b>t</b> =
+                        <span class="stacked-fraction">
+                        <div class="numerator2">25 000</div>
+                        <div class="denominator2">1 000</div>
+                        </span><br><b>P</b> = 25</td>
+                        <td style="text-align: left;">First, find <b>I<sub>S</sub></b>:<br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=15&space;330-11&space;000" title="I_{S}=15 330-11 000" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=4&space;330" title="I_{S}=4 330" /><br></td>
+                        <td style="text-align: left;">Then, find <b>t</b>:<br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{4&space;330}{11&space;000(0.0825)}" title="t=\frac{4 330}{11 000(0.0825)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{4&space;330}{907.5}" title="t=\frac{4 330}{907.5}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=4.77" title="t=4.77" /><br></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The time taken is <b>25 <em>years</em></b></td>
+                        <td style="text-align: left;" colspan="2">The time taken is <b>4.77 <em>years</em></b></td>
+                    </tr>
+                </table>
+                </div>
+<!---RATE FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+            <h3>Solving for the Rate (r)</h3></div>
+            <h2>$$r=\frac{I_{S}}{Pt}$$</h2>
+            <p>where:</p>
+                <ul style="list-style-type: none;">
+                    <li><b>I<sub>S</sub></b> = Simple Interest</li>
+                    <li><b>P</b> = Principal</li>
+                    <li><b>t</b> = Time in years</li>
+                </ul>
+                <h3>Examples</h3>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th colspan="2"><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;"><em>Simple Interest</em> (<b>I<sub>S</sub></b>) = 1 500<br><em>Principal</em> (<b>P</b>) = 25 000<br><em>Time</em> (<b>t</b>) = 3 years</td>
+                        <td colspan="2" style="text-align: left;"><em>Future Value</em> (<b>F</b>) = 20 400<br><em>Principal</em> (<b>P</b>) = 18 000<br><em>Time</em> (<b>t</b>) = 2 years</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="3" style="text-align: center;">Rate (<b>r</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{I_{S}}{Pt}" title="r=\frac{I_{S}}{Pt}" /></td>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=F-P" title="I_{S}=F-P" /></td>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">       
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{I_{S}}{Pt}" title="r=\frac{I_{S}}{Pt}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{1&space;500}{25&space;000(3)}" title="r=\frac{1 500}{25 000(3)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{1&space;500}{75&space;000}" title="r=\frac{1 500}{75 000}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=0.02" title="r=0.02" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=2\%" title="r=2\%" />
+                        </td>
+                        <td style="text-align: left;">First, find <b>I<sub>S</sub></b>:<br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=20&space;400-18&space;000" title="I_{S}=20 400-18 000" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{S}=2&space;400" title="I_{S}=2 400" /><br></td>
+                        <td style="text-align: left;">Then, find <b>r</b>:<br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{2&space;400}{18&space;000(2)}" title="r=\frac{2 400}{18 000(2)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\frac{2&space;400}{36&space;000}" title="r=\frac{2 400}{36 000}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=0.0667" title="r=0.0667" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=6.67\%" title="r=6.67\%" /><br></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The rate is <b>2%</b></td>
+                        <td colspan="2" style="text-align: left;">The rate is <b>6.67%</b></td>
+                    </tr>
+                </table>
+                </div>
+<!--SUMMARY OF SIMPLE INTEREST FORMULAS-->
+        <div class="container">
+        <div class="highlight">
+                <h3>Summary</h3></div>
+                <table>
+                    <tr>
+                        <th colspan="2">Simple Interest</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>Simple Interest</b> is the payment for the use of borrowed money or the amount earned on invested money</td>
+                    </tr>
+                    <tr>
+                        <td>Simple Interest (<b>I<sub>S</sub></b>)</td>
+                        <td>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$I_{S}=Prt$$" title="$$I_{S}=Prt$$" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Future Value (<b>F</b>)</td>
+                        <td>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$F=P&plus;I_{S}$$" title="$$F=P+I_{S}$$" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$F=P\begin{pmatrix}1&plus;rt\end{pmatrix}$$" title="$$F=P\begin{pmatrix}1+rt\end{pmatrix}$$" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Principal (<b>P</b>)</td>
+                        <td>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$P=F-I_{S}$$" title="$$P=F-I_{S}$$" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{I_{S}}{rt}" title="P=\frac{I_{S}}{rt}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time (<b>t</b>)</td>
+                        <td>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$t=\frac{I_{S}}{Pr}$$" title="$$t=\frac{I_{S}}{Pr}$$" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Rate (<b>r</b>)</td>
+                        <td>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;$$r=\frac{I_{S}}{Pt}$$" title="$$r=\frac{I_{S}}{Pt}$$" />
+                        </td>
+                    </tr>
+                </table>
+        </div>
+    </section>
+<!--COMPOUND INTEREST-->
+    <section id="compound-interest" class="section-anchor">
+        <h2>Compound Interest</h2>
+        <div class="container">
+        <div class="highlight">
+        <h3>Definition of Terms</h3>
+        </div>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>Compound Interest (<b>I<sub>C</sub></b>)</td>
+                    <td>An interest from the periodic addition of simple interest to the principal amount or simply the difference between the compound amount and the principal</td>
+                </tr>
+                <tr>
+                    <td>Future Value(<b>F</b>)</td>
+                    <td>An accumulated amount obtained by adding the principal and the compound interest</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">Frequency of Conversion (<b>m</b>)</td>
+                    <td>The number of conversion periods in one year.</td>
+                </tr>
+                <tr>
+                    <td>
+                        Common conversion periods are:
+                        <ul style="list-style-type: none; padding-left: 0;">
+                            <li><em>Annually</em> &nbsp; (m = <b>1</b>)</li>
+                            <li><em>Semi-annually</em> &nbsp; (m = <b>2</b>)</li>
+                            <li><em>Quarterly</em> &nbsp; (m = <b>4</b>)</li>
+                            <li><em>Monthly</em> &nbsp; (m = <b>12</b>)</li>
+                            <li><em>Daily</em> &nbsp; (m = <b>365</b>)</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Conversion or Interest Period (<b>t</b>)</td>
+                    <td>The time between successive conversion of interest.</td>
+                </tr>
+                <tr>
+                    <td>Total number of conversion periods (<b>n</b>)</td>
+                    <td>The total number of conversion periods within the time period.<br>
+                        $$n=mt=\left ( \text{frequency of conversion} \right )\left ( \text{time} \right )$$
+                </tr>
+                <tr>
+                    <td>Nominal Rate (<b>r</b>)</td>
+                    <td>The annual rate interest</td>
+                </tr>
+                <tr>
+                    <td>Rate (<b>i</b>)</td>
+                    <td>The interest rate for each conversion period.<br>
+                        $$i=\frac{r}{m}=\frac{\text{annual rate interest}}{\text{frequency of conversion}}$$
+                <tr>
+                    <td>Present Value (<b>P</b>)</td>
+                    <td>The value that will accumulate to the future value if there is an interest at periodic rate for conversion period</td>
+                </tr>
+            </table>
+            </div>
+<!---FUTURE VALUE FORMULA AND EXAMPLES-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Future Value (F)</h3></div>
+        <div class="inline-div">
+        <h2 id="h02">$$F=P\begin{pmatrix}1+\frac{r}{m} \\\end{pmatrix}^{mt}$$</h2>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <h2 id="h02">$$F=P\left ( 1+i \right )^{n}$$</h2></div>
+        <p>where:</p>
+            <ul style="list-style-type: none;">  
+                <li><b>P</b> = Present Value</li>
+                <li><b>F</b> = Maturity (Future) Value at the end of the term</li>
+                <li><b>r</b> = Nominal Rate</li>
+                <li><b>t</b> = Term or time in years</li>
+                <li><b>m</b> = Frequency of Conversions</li>
+                <li><br></li>
+                <li><b>i</b> = Rate = <em><span class="stacked-fraction">
+                    <div class="numerator2">r</div>
+                    <div class="denominator2">m</div></span></em>
+                </span></li>
+                <li><b>n</b> = Total number of conversions = <em>mt</em></li>
+            </ul>
+
+            <h3>Example #1</h3>
+            <h4>Find the maturity value and interest if ₱20 000 is deposited in a bank at 5% compounded quarterly for 10 years.</h4>
+                <table>
+                    <tr>
+                        <th>GRESA</th>
+                        <th colspan="2"><em>Example #1</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td colspan="2" style="text-align: left;">
+                            <em>Present Value</em> (<b>P</b>) = 20 000<br>
+                            <em>Nominal Rate</em> (<b>r</b>) = 5% or 0.05<br>
+                            <em>Time</em> (<b>t</b>) = 10 years<br>
+                            <em>Frequency of Conversion</em> (<b>m</b>) = 4<br><br>
+                            <em>Rate</em> (<b>i</b>) = 
+                                <em><span class="stacked-fraction">
+                                <div class="numerator2">r</div>
+                                <div class="denominator2">m</div></span></em>=
+                                <span class="stacked-fraction">
+                                <div class="numerator2">0.05</div>
+                                <div class="denominator2">4</div></span>
+                                = 0.0125<br>
+                            <em>Total number of conversions</em> (<b>n</b>) = <em>mt</em> = (4)(10) = 40<br>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td style="text-align: center;">Future Value (<b>F</b>)</td>
+                        <td style="text-align: center;">Compound Interest (<b>I<sub>C</sub></b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;F=P(1&plus;i)^{n}" title="F=P(1+i)^{n}" /></td>
+                        <td style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;I_{C}=F-P" title="I_{C}=F-P" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            First, find <b>F</b>:<br><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=20000(1&plus;0.0125)^{40}" title="F=20000(1+0.0125)^{40}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=20000(1.0125)^{40}" title="F=20000(1.0125)^{40}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=32&space;872.39" title="F=32 872.39" /><br>
+                        </td>
+                        <td style="text-align: left;">
+                            Now, find <b>I<sub>C</sub></b>:<br><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{C}=32&space;872.39-20&space;000" title="I_{C}=32 872.39-20 000" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;I_{C}=12&space;872.39" title="I_{C}=12 872.39" /><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td colspan="2" style="text-align: left;">The future value is <b>₱32,872.39</b> and the compound interest is <b>₱12,872.39</b></td>
+                    </tr>
+                    </table>
+                    </div>
+<!--PRESENT VALUE FORMULA AND EXAMPLE-->
+        <div class="container">
+        <div class="highlight">
+                <h3>Solving for the Present Value (P)</h3></div>
+                <h2>$$P=\frac{F}{\left ( 1+i \right )^{n}}$$</h2>
+                <p>Where:</p>
+                <ul style="list-style-type: none;">  
+                    <li><b>F</b> = Future Value</li>
+                    <li><b>P</b> = Present Value</li>
+                    <li><b>i</b> = Rate</li>
+                    <li><b>n</b> = Total number of conversions</li>
+                </ul>
+                <h3>Example #2</h3>
+                <h4>Find the present value of ₱100 000 due in 5 years if money is invested at 15% compounded monthly.</h4>
+                <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th colspan="2"> <em>Example #2</em> </th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td colspan="2" style="text-align: left;">
+                            <em>Future Value</em> (<b>F</b>) = 100 000<br>
+                            <em>Time</em> (<b>t</b>) = 5 years<br>
+                            <em>Nominal Rate</em> (<b>r</b>) = 15% or 0.15<br>
+                            <em>Frequency of Conversions</em> (<b>m</b>) = 12<br><br>
+                             <em>Rate</em> (<b>i</b>) = 
+                                <em><span class="stacked-fraction">
+                                <div class="numerator2">r</div>
+                                <div class="denominator2">m</div></span></em>=
+                                <span class="stacked-fraction">
+                                <div class="numerator2">0.15</div>
+                                <div class="denominator2">12</div></span>
+                                = 0.0125<br>
+                            <em>Total number of conversions</em> (<b>n</b>) = <em>mt</em> = (12)(5) = 60<br>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Present Value (<b>P</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td colspan="2" style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{F}{\left(1&plus;i\right)^{n}}" title="P=\frac{F}{\left(1+i\right)^{n}}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                           <img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{100000}{\left(1&plus;0.0125\right)^{60}" title="P=\frac{100000}{\left(1+0.0125\right)^{60}" /><br>
+                           <img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{100000}{\left(1.0125\right)^{60}" title="P=\frac{100000}{\left(1.0125\right)^{60}" /><br>
+                           <img src="https://latex.codecogs.com/svg.image?\small&space;P=47,456.76" title="P=47,456.76" /><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The present value is <b>₱47 456.76</b></td>
+                    </tr>
+                    </table>
+                    </div>
+<!--RATE FORMULA AND EXAMPLE-->
+        <div class="container">
+        <div class="highlight">
+                    <h3>Solving for the Nominal Rate (r)</h3></div>
+                    <h2>$$r=\left ( \frac{F}{P} \right )^{\frac{1}{n}}-1$$</h2>
+                    <p>where:</p>
+                    <ul style="list-style-type: none;">  
+                        <li><b>F</b> = Compounded Amount or Future Value</li>
+                        <li><b>P</b> = Present Value or Principal</li>
+                        <li><b>n</b> = Total Number of Conversions</li>
+                    </ul>
+                    <h3>Example #3</h3>
+                    <h4>At what interest rate compounded semi-annually will ₱20 000 accumulate to ₱30 000 in 5 years?</h4>
+                    <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th colspan="2"> <em>Example #3</em> </th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td colspan="2" style="text-align: left;">
+                            <em>Frequency of Conversion</em> (<b>m</b>) = 2<br>
+                            <em>Present Value</em> (<b>P</b>) = 20 000<br>
+                            <em>Future Value</em> (<b>F</b>) = 30 000<br>
+                            <em>Time</em> (<b>t</b>) = 5 years<br><br>
+                            <em>Total number of conversions</em> (<b>n</b>) = <em>mt</em> = (2)(5) = 10<br></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Nominal Rate (<b>r</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td colspan="2" style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;r=\left(\frac{F}{P}\right)^{\frac{1}{n}}-1" title="r=\left(\frac{F}{P}\right)^{\frac{1}{n}}-1" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\left(\frac{30000}{20000}\right)^{\frac{1}{10}}-1" title="r=\left(\frac{30000}{20000}\right)^{\frac{1}{10}}-1" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=\left(1.5\right)^{\frac{1}{10}}-1" title="r=\left(1.5\right)^{\frac{1}{10}}-1" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=1.0414-1" title="r=1.0414-1" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;r=0.0414" title="r=0.0414" /><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The interest rate is 0.0414 or <b>4.14%</b></td>
+                    </tr>
+                    </table>
+                    </div>
+<!--TIME FORMULA AND EXAMPLE-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for Time (t)</h3></div>
+        <h2>$$t=\frac{log\frac{F}{P}}{\textit{m log}\left ( 1+i \right )}$$</h2>
+        <p>where:</p>
+                    <ul style="list-style-type: none;">  
+                        <li><b>F</b> = Future Value</li>
+                        <li><b>P</b> = Present Value</li>
+                        <li><b>m</b> = Conversion Periods or Frequency of conversion</li>
+                        <li><b>i</b> = Rate</li>
+                    </ul>
+                    <h3>Example #4</h3>
+                    <h4>How long will it take ₱1 000 to earn ₱300 if the interest is 12% compounded semi-annually?</h4>
+                    <table>
+                    <tr>
+                        <th> GRESA</th>
+                        <th colspan="2"> <em>Example #4</em> </th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td colspan="2" style="text-align: left;">
+                            <em>Present Value</em> (<b>P</b>) = 1 000<br>
+                            <em>Compound Interest</em> (<b>I<sub>C</sub></b>) = 300<br>
+                            <em>Future Value</em> (<b>F</b>) = 1 300<br>
+                            <em>Nominal Rate</em> (<b>i</b>) = 12% or 0.12<br>
+                            <em>Frequency of Conversions</em> (<b>m</b>) = 2<br><br>
+                            <em>Rate</em> (<b>i<sup>m</sup></b>) = 
+                                <em><span class="stacked-fraction">
+                                <div class="numerator2">r</div>
+                                <div class="denominator2">m</div></span></em>=
+                                <span class="stacked-fraction">
+                                <div class="numerator2">0.12</div>
+                                <div class="denominator2">2</div></span>
+                                = 0.06</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Time (<b>t</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td colspan="2" style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{log\frac{F}{P}}{\textit{m&space;log}\left(1&plus;i\right)}" title="t=\frac{log\frac{F}{P}}{\textit{m log}\left(1+i\right)}" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{log\frac{1300}{1000}}{\textit{2&space;log}\left(1&plus;0.06\right)}" title="t=\frac{log\frac{1300}{1000}}{\textit{2 log}\left(1+0.06\right)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{log&space;1.3}{\textit{2&space;log}\left(1.06\right)}" title="t=\frac{log 1.3}{\textit{2 log}\left(1.06\right)}" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;t=2.25" title="t=2.25" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td style="text-align: left;">The time it will take is <b>2.25 years.</b></td>
+                    </tr>
+                    </table>
+                    </div>
+<!--SUMMARY-->
+        <div class="container">
+        <div class="highlight">
+            <h3>Summary</h3></div>
+                <table>
+                    <tr>
+                        <th colspan="2">Compound Interest</th>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><b>Compound interest</b> is the interest from the periodic addition of simple interest to the principal amount or simply the difference between the compound amount and the principal</td>
+                    </tr>
+                    <tr>
+                        <td>Future Value (<b>F</b>)</td>
+                        <td><img src="https://latex.codecogs.com/svg.image?\small&space;F=P(1&plus;i)^{n}" title="F=P(1+i)^{n}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Present Value (<b>P</b>)</td>
+                        <td><img src="https://latex.codecogs.com/svg.image?\small&space;P=\frac{F}{\left(1&plus;i\right)^{n}}" title="P=\frac{F}{\left(1+i\right)^{n}}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Nominal Rate (<b>r</b>)</td>
+                        <td><img src="https://latex.codecogs.com/svg.image?\small&space;r=\left(\frac{F}{P}\right)^{\frac{1}{n}}-1" title="r=\left(\frac{F}{P}\right)^{\frac{1}{n}}-1" /></td>
+                    </tr>
+                    <tr>
+                        <td>Time in years (<b>t</b>)</td>
+                        <td><img src="https://latex.codecogs.com/svg.image?\small&space;t=\frac{log\frac{F}{P}}{\textit{m&space;log}\left(1&plus;i\right)}" title="t=\frac{log\frac{F}{P}}{\textit{m log}\left(1+i\right)}" /></td>
+                    </tr>
+                    </table>
+                    </div>
+<!--SIMPLE ANNUITY-->
+        </section>
+        <section id="annuities" class="section-anchor">
+        <h2>Simple Annuity</h2>
+        <div class="container">
+        <div class="highlight">
+        <h3>Definition of Terms</h3></div>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td>Simple Annuity</td>
+                    <td>An annuity where the payment interval is the same as the interest period</td>
+                </tr>
+                <tr>
+                    <td>Payment Interval</td>
+                    <td>Time between successive payments</td>
+                </tr>
+                <tr>
+                    <td>Term of an Annuity (<b>t</b>)</td>
+                    <td>Time between the first payment interval and the last payment interval</td>
+                </tr>
+                <tr>
+                    <td>Regular or Periodic Payment (<b>R</b>)</td>
+                    <td>The amount of each payment</td>
+                </tr>
+                <tr>
+                    <td>Amount (Future Value) of an Annuity (<b>F</b>)</td>
+                    <td>Sum of the future values of all the payments to be made during the entire term of the annuity</td>
+                </tr>
+                <tr>
+                    <td>Present Value of an Annuity (<b>P</b>)</td>
+                    <td>Sum of the present values of all the payments to be made during the entire term of the annuity</td>
+                </tr>
+            </table>
+        </div>
+<!---FUTURE VALUE FORMULA AND EXAMPLE-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Future Value (F)</h3></div>
+        <h2>$$F=R\left ( \frac{(1+i)^{n}-1}{i} \right )$$</h2>
+        <p>where:</p>
+            <ul style="list-style-type: none;">  
+                <li><b>F</b> = Future Value of the Annuity</li>
+                <li><b>R</b> = Regular or Periodic Payment</li>
+                <li><b>i</b> = Interest Rate per payment period</li>
+                <li><b>n</b> = Term of the Annuity in number of payment periods</li>
+            </ul>
+            <h3>Example #1</h3>
+            <h4>Suppose Mrs. Perez would like to save ₱5 000 at the end of each month for 6 months in a bank that gives 10% compounded monthly. How much is the amount or future value of her savings after 6 months?</h4>
+            <h3>Example #2</h3>
+            <h4>In order to save his high school graduation, Ron decided to save P200 at the end of each month. If the bank pays 0.25% compounded monthly, how much will his money be at the end of 6 years?</h4>
+                <table>
+                    <tr>
+                        <th>GRESA</th>
+                        <th><em>Example #1</em></th>
+                        <th><em>Example #2</em></th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Given</td>
+                        <td style="text-align: left;">
+                            <em>Regular or Periodic Payment</em> (<b>R</b>) = 5 000<br>
+                            <em>Term of the annuity</em> (<b>t</b>) = 6 months <br>
+                            <em>Frequency of Conversions</em> (<b>m</b>) = 12<br>
+                            <em>Nominal Rate</em> (<b>r</b>) = 10% or 0.10<br><br>
+                            <em>Rate</em> (<b>i</b>) = 
+                                <em><span class="stacked-fraction">
+                                <div class="numerator2">r</div>
+                                <div class="denominator2">m</div></span></em>=
+                                <span class="stacked-fraction">
+                                <div class="numerator2">0.10</div>
+                                <div class="denominator2">12</div></span>
+                                = 0.0083<br>
+                            <em>Total number of conversions</em> (<b>n</b>) = <em>mt</em> = (12)(<span class="stacked-fraction">
+                                <div class="numerator2">1</div>
+                                <div class="denominator2">2</div></span>) = 6</td>
+                        <td style="text-align: left;">
+                            <em>Regular or Periodic Payment</em> (<b>R</b>) = 200<br>
+                            <em>Term of the annuity</em> (<b>t</b>) = 6 years <br>
+                            <em>Frequency of Conversions</em> (<b>m</b>) = 12<br>
+                            <em>Nominal Rate</em> (<b>r</b>) = 0.25% or 0.0025<br><br>
+                            <em>Rate</em> (<b>i</b>) = 
+                                <em><span class="stacked-fraction">
+                                <div class="numerator2">r</div>
+                                <div class="denominator2">m</div></span></em>=
+                                <span class="stacked-fraction">
+                                <div class="numerator2">0.0025</div>
+                                <div class="denominator2">12</div></span>
+                                = 0.00020833<br>
+                            <em>Total number of conversions</em> (<b>n</b>) = <em>mt</em> = (12)(6) = 72</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Required</td>
+                        <td colspan="2" style="text-align: center;">Amount (Future) Value of an Annuity (<b>F</b>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Equation</td>
+                        <td colspan="2" style="text-align: center;"><img src="https://latex.codecogs.com/svg.image?\small&space;F=R\left(\frac{(1&plus;i)^{n}-1}{i}\right)" title="F=R\left(\frac{(1+i)^{n}-1}{i}\right)" /></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Solution</td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=5000\left(\frac{(1&plus;0.0083)^{6}-1}{0.0083}\right)" title="F=5000\left(\frac{(1+0.0083)^{6}-1}{0.0083}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=5000\left(\frac{(1.0083)^{6}-1}{0.0083}\right)" title="F=5000\left(\frac{(1.0083)^{6}-1}{0.0083}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=5000\left(\frac{1.05105331-1}{0.0083}\right)" title="F=5000\left(\frac{1.05105331-1}{0.0083}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=5000\left(\frac{0.05105331}{0.0083}\right)" title="F=5000\left(\frac{0.05105331}{0.0083}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=5000(12.66329293)" title="F=5000(12.66329293)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=63316.46" title="F=63316.46" /><br>
+                        </td>
+                        <td style="text-align: left;">
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=200\left(\frac{(1&plus;0.00020833)^{72}-1}{0.00020833}\right)" title="F=200\left(\frac{(1+0.00020833)^{72}-1}{0.00020833}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=200\left(\frac{(1.00020833)^{72}-1}{0.00020833}\right)" title="F=200\left(\frac{(1.00020833)^{72}-1}{0.00020833}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=200\left(\frac{1.01511124-1}{0.00020833}\right)" title="F=200\left(\frac{1.01511124-1}{0.00020833}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=200\left(\frac{0.01511124}{0.00020833}\right)" title="F=200\left(\frac{0.01511124}{0.00020833}\right)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=200(72.53511256)" title="F=200(72.53511256)" /><br>
+                            <img src="https://latex.codecogs.com/svg.image?\small&space;F=14507.02" title="F=14507.02" /><br>
+                        </td>
+                    </tr>
+                    <tr>    
+                        <td style="font-size: 150%; font-family: Poppins; color: #1a2634;">Answer</td>
+                        <td colspan="2" style="text-align: left;">The future value of the annuity is <b>₱63,316.46</b></td>
+                    </tr>
+                    </table>    
+                    </div>
+<!---PRESENT VALUE FORMULA AND EXAMPLE-->
+        <div class="container">
+        <div class="highlight">
+        <h3>Solving for the Present Value (P)</h3></div>
+        <h2>$$P=R\left ( \frac{1-(1+i)^{-n}}{i} \right )$$</h2>
+        <p>where:</p>
+        
+        </section>
+        <section id="stocks">
+            <h2>D. Stocks</h2>
+            <!-- ... -->
+        </section>
+        <section id="bonds">
+            <h2>Bonds</h2>
+            <!---Lesson 1: Concepts about Bonds-->
+            <div class="bond-container" id="bonds-lesson1">
+                <h3 style="text-align:center; margin-top:0; font-size: 200%;">Concepts about Bonds</h2>
+                <div>
+                    <h4>Definition of Terms</h4>
+                    <p><b>Bond:</b> interest-bearing security which promises to pay:</p>
+                    <ol type="a";>
+                        <li>a stated amount of money on the maturity date, and</li>
+                        <li>regular interest payments called coupons.</li>
+                    </ol>
+                    <p><b>Coupon:</b> periodic interest payment that the bondholder receives during the time between purchase date and maturity date; usually received semi-annually.</p>
+                    <p><b>Coupon Rate:</b> the rate per coupon payment period, denoted by <b>"r"</b></p>
+                    <p><b>Price of a Bond:</b> the price of the bond at purchase time; denoted by <b>"P"</b></p>
+                    <p><b>Par Value or Face Value</b> the amount payable or the maturity date; denoted by <b>"F"</b></p>
+                    <ol style="margin-top:0;">
+                        <li>If P = F, the bond is <b>purchased at par</b>.</li>
+                        <li>If P < F, the bond is <b>purchased at a discount</b>.</li>
+                        <li>If P > F, the bond is <b>purchased at a premium</b>.</li>
+                    </ol>   
+                    <p><b>Term of a Bond:</b> fixed period of time (in years) at which the bond is redeemable as stated in the bond certificate; number of years from time of purchase to maturity date</p>
+                    <p><b>Fair Price Bond:</b> present value of all cash inflows to the bondholder</p>
+                </div>
+        </section>
+        <section id="loans">
+            <h2>Loans</h2>
+            <!-- LESSON 1: Business Loans and Consumer Loans -->
+            <div>
+                <h2 style="text-align:center; margin-top:0;">Lesson 1: Business Loans and Consumer Loans</h2>
+                <div class="loan-section" id="loan-objectives">
+                    <h4>Objectives</h4>
+                    <ul>
+                        <li>Illustrate business and consumer loans.</li>
+                        <li>Distinguish between business and consumer loans.</li>
+                    </ul>
+                </div>
+                <div class="loan-section" id="loan-definitions">
+                    <h4>Definition of Terms</h4>
+                    <p><b>Business Loan:</b> Money borrowed specifically for business purposes (e.g., start-up or expansion).</p>
+                    <p><b>Consumer Loan:</b> Money borrowed by an individual for personal or family needs.</p>
+                    <p><b>Collateral:</b> Assets (e.g., house, investments) used to secure a loan.</p>
+                    <p><b>Term of the Loan:</b> The time allowed to pay back the entire loan.</p>
+                </div>
+                <div>
+                    <h4>Basics of Consumer Loans vs. Business Loans</h4>
+                    <table>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Consumer Loan</th>
+                            <th>Business Loan</th>
+                        </tr>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Personal or family needs</td>
+                            <td>Business start-up or expansion</td>
+                        </tr>
+                        <tr>
+                            <td>Collateral</td>
+                            <td>May be required</td>
+                            <td>May be required</td>
+                        </tr>
+                        <tr>
+                            <td>Guarantor</td>
+                            <td>Not usually required</td>
+                            <td>Usually required</td>
+                        </tr>
+                        <tr>
+                            <td>Requirements</td>
+                            <td>Credit report, income tax returns, payslips</td>
+                            <td>Credit report, bank statements, business financials</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Term</td>
+                            <td>Generally longer</td>
+                            <td>Generally shorter</td>
+                        </tr>
+                        <tr>
+                            <td>Interest Rate</td>
+                            <td>Lower</td>
+                            <td>Higher</td>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <h4>Examples</h4>
+                    <ol>
+                        <li>Mr. Agustin borrows money to buy barbershop equipment → <b>Business Loan</b></li>
+                        <li>Mr. & Mrs. Craig borrow money for their son’s college tuition → <b>Consumer Loan</b></li>
+                        <li>Mr. Alonzo borrows money to add a new room to their house → <b>Consumer Loan</b></li>
+                        <li>Mr. Samson borrows to put up another siomai cart → <b>Business Loan</b></li>
+                        <li>Roan borrows money to expand her computer shop → <b>Business Loan</b></li>
+                    </ol>
+                </div>
+            </div>
+            <!-- LESSON 2: Solving Problems Involving Business Loans and Consumer Loans (Amortization and Mortgage) -->
+            <div class="container" id="lesson2">
+                <h2 style="text-align:center; margin-top:0;">Lesson 2: Solving Problems Involving Business Loans and Consumer Loans (Amortization and Mortgage)</h2>
+                <div class="loan-section" id="lesson2-objectives">
+                    <h4>Objective</h4>
+                    <ul>
+                        <li>Solve problems on business and consumer loans using the GRESA method.</li>
+                    </ul>
+                </div>
+                <div class="section" id="lesson2-definitions">
+                    <h4>Definition of Terms</h4>
+                    <p><b>Amortization:</b> Paying a loan in equal installments.</p>
+                    <p><b>Mortgage:</b> Loan secured by collateral (usually real estate).</p>
+                    <p><b>Chattel Mortgage:</b> Loan on movable property.</p>
+                    <p><b>Outstanding Balance:</b> Remaining debt at a given time.</p>
+                </div>
+                <div class="loan-section" id="lesson2-examples">
+                    <h4>Problem Examples (Using GRESA)</h4>
+                    <div class="gresa-problem">
+                        <p><b>Example 1:</b> Mr. Garcia borrowed ₱1,000,000 at 7% for 1 year.</p>
+                        <p><b>Given:</b> P=1,000,000; n=1; j=0.07</p>
+                        <p><b>Required:</b> F</p>
+                        <p><b>Equation:</b> F = P(1+j)^n</p>
+                        <p><b>Solution:</b> F = 1,000,000(1+0.07) = ₱1,070,000</p>
+                        <p><b>Answer:</b> ₱1,070,000</p>
+                    </div>
+                    <div class="gresa-problem">
+                        <p><b>Example 2:</b> Chattel Mortgage, ₱1,200,000 loan, ₱31,000/month for 5 years.</p>
+                        <p><b>Given:</b> P=1,200,000; payment=31,000; n=60</p>
+                        <p><b>Required:</b> Total Interest</p>
+                        <p><b>Equation:</b> Total Payment = payment × n</p>
+                        <p><b>Solution:</b> 31,000 × 60 = ₱1,860,000</p>
+                        <p>Total Interest = 1,860,000 – 1,200,000 = ₱660,000</p>
+                        <p><b>Answer:</b> ₱660,000</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="review">
+            <h2>G. Review & Assessment</h2>
+            <!-- ... -->
+        </section>
+        <section id="resources">
+            <h2>H. Resources</h2>
+            <!-- ... -->
+        </section>
+    </div>
+</body>
+</html>
