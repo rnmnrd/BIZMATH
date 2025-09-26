@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BIZMATH</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e6f0ff;
+            margin: 0;
+            padding: 0;
+        }
+        #about {
+            max-width: 600px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(42,77,105,0.08);
+            padding: 32px 24px;
+        }
+        h2 {
+            color: #2a4d69;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        h3 {
+            color: #205081;
+            margin-top: 24px;
+            margin-bottom: 8px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+        /* Minimize extraneous load: clean, simple, readable */
+        /* Maximize germane load: highlight structure and key points */
+        .highlight {
+            background: #e6f7ff;
+            border-left: 4px solid #2a4d69;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+    </style>
+    <script>
+        // Minimize extraneous load: provide simple navigation and focus
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus on the main heading for accessibility
+            document.querySelector('h2').focus();
+
+            // Add keyboard navigation for team list
+            const teamList = document.querySelectorAll('#about ul li');
+            teamList.forEach((li, idx) => {
+                li.tabIndex = 0;
+                li.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        li.classList.toggle('highlight');
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <section id="about">
+        <h2 tabindex="0">About</h2>
+        <div class="highlight">
+            This page is designed using principles of Cognitive Load Theory: minimizing intrinsic and extraneous load, and maximizing germane load for better learning.
+        </div>
+        <div>
+            <h3>Our Goal</h3>
+            <p>To make business mathematics accessible and understandable for all students through interactive lessons and practical tools.</p>
+        </div>
+        <div>
+            <h3>Our Mission</h3>
+            <p>To empower learners by providing clear explanations, step-by-step solutions, and engaging resources for mastering business math concepts.</p>
+        </div>
+        <div>
+            <h3>The Team Behind BIZMATH</h3>
+            <ul>
+                <li>Abaja, Ron Menard</li>
+                <li>Roxas, John Patrick</li>
+                <li>Perez, Trishia</li>
+                <li>Pacia, Ronalyn</li>
+                <li>Capuno, Melody Mycah</li>
+            </ul>
+        </div>
+    </section>
+</body>

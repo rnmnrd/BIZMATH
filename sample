@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BIZMATH Calculator Navigation</title>
+<style>
+    :root {
+        --primary-color: #2a4d69;
+        --primary-hover: #3d6b94;
+        --highlight-color: #ffd65a;
+        --bg-light: #f7faff;
+        --bg-hover: #e9f1fb;
+        --border-light: #ccd9e8;
+        --text-dark: #2a4d69;
+        --max-width: 700px;
+    }
+
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: var(--bg-light);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+    }
+
+    nav {
+        width: 100%;
+        background: var(--primary-color);
+        color: #fff;
+        padding: 14px 20px;
+        display: flex;
+        justify-content: center;
+        gap: 18px;
+        flex-wrap: wrap;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .main-btn {
+        background: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 26px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .main-btn:hover {
+        background: var(--primary-hover);
+        color: var(--highlight-color);
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 110%;
+        background: #fff;
+        min-width: 220px;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        border-radius: 10px;
+        z-index: 1000;
+        padding: 10px 0;
+        animation: fadeIn 0.2s;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-8px);}
+        to { opacity: 1; transform: translateY(0);}
+    }
+
+    .dropdown-content a {
+        color: var(--text-dark);
+        text-align: left;
+        padding: 12px 22px;
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s;
+        border-radius: 6px;
+    }
+
+    .dropdown-content a:hover {
+        background: var(--bg-hover);
+        color: var(--primary-hover);
+    }
+
+    .nav-section {
+        max-width: var(--max-width);
+        margin: 40px auto;
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        padding: 36px 28px;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 1.9rem;
+        letter-spacing: 0.5px;
+    }
+
+    .category {
+        margin-bottom: 28px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .category:last-child {
+        border-bottom: none;
+    }
+
+    .category-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: #205081;
+        margin-bottom: 14px;
+        text-align: center;
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+    }
+
+    .sub-btn {
+        width: 90%;
+        background: var(--bg-light);
+        color: var(--text-dark);
+        border: 1px solid var(--border-light);
+        padding: 10px 0;
+        font-weight: 500;
+        font-size: 1rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+        text-decoration: none;
+        text-align: center;
+    }
+
+    .sub-btn:hover {
+        background: var(--bg-hover);
+        color: var(--primary-hover);
+        transform: translateY(-1px) scale(1.02);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    @media (max-width: 700px) {
+        h2 {
+            font-size: 1.4rem;
+        }
+        .main-btn, .sub-btn {
+            font-size: 0.9rem;
+            padding: 10px 18px;
+        }
+        nav {
+            flex-direction: column;
+            gap: 10px;
+            padding: 12px 0;
+        }
+        .dropdown-content {
+            min-width: 180px;
+        }
+    }
+</style>
+</head>
+<body>
+<nav>
+    <a href="../BIZMATH.html#home">
+        <button class="main-btn">🏠 Home</button>
+    </a>
+    <div class="dropdown">
+        <button class="main-btn" id="topicsBtn">Topics to Calculate ▼</button>
+        <div class="dropdown-content" id="topicsMenu">
+            <a href="simple.html">Simple Interest</a>
+            <a href="compound-interest/compound-interest.html">Compound Interest</a>
+            <a href="simple-annuity.html">Simple Annuity</a>
+            <a href="ordinary-annuity.html">Ordinary Annuity</a>
+            <a href="deferred-annuity.html">Deferred Annuity</a>
+            <a href="stocks.html">Stocks</a>
+            <a href="bonds.html">Bonds</a>
+            <a href="consumer-loans.html">Consumer Loans</a>
+            <a href="business-loans.html">Business Loans</a>
+        </div>
+    </div>
+</nav>
+
+<section class="nav-section" aria-label="Calculator Navigation">
+    <h2>Calculator Topics</h2>
+    
+    <div class="category">
+        <div class="category-title">A. Interests</div>
+        <div class="button-group">
+            <a class="sub-btn" href="simple.html">Simple Interest</a>
+            <a class="sub-btn" href="compound-interest/compound-interest.html">Compound Interest</a>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">B. Annuities</div>
+        <div class="button-group">
+            <a class="sub-btn" href="simple-annuity.html">Simple Annuity</a>
+            <a class="sub-btn" href="ordinary-annuity.html">Ordinary Annuity</a>
+            <a class="sub-btn" href="deferred-annuity.html">Deferred Annuity</a>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">C. Stocks</div>
+        <div style="text-align:center;">
+            <a class="main-btn" href="stocks.html">Stocks</a>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">D. Bonds</div>
+        <div style="text-align:center;">
+            <a class="main-btn" href="bonds.html">Bonds</a>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">E. Loans</div>
+        <div class="button-group">
+            <a class="sub-btn" href="consumer-loans.html">Consumer Loans</a>
+            <a class="sub-btn" href="business-loans.html">Business Loans</a>
+        </div>
+    </div>
+</section>
+
+<script>
+const topicsBtn = document.getElementById('topicsBtn');
+const topicsMenu = document.getElementById('topicsMenu');
+let topicsOpen = false;
+
+topicsBtn.onclick = function() {
+  topicsOpen = !topicsOpen;
+  topicsMenu.style.display = topicsOpen ? 'block' : 'none';
+};
+
+document.addEventListener('click', function(e) {
+  if (!topicsBtn.contains(e.target) && !topicsMenu.contains(e.target)) {
+    topicsMenu.style.display = 'none';
+    topicsOpen = false;
+  }
+});
+</script>
+</body>
+</html>
