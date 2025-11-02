@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formula Builder Challenge - BIZMATH</title>
+    <link rel="stylesheet" href="formula_builder.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="header-left">
+                <h1>🎯 Formula Builder Challenge</h1>
+                <p class="subtitle">Build formulas, match meanings, master business math!</p>
+            </div>
+            <div class="header-right">
+                <button class="btn-home" onclick="window.location.href='BIZMATH.html'">🏠 Home</button>
+            </div>
+        </header>
+
+        <div id="startScreen" class="screen active">
+            <div class="start-card">
+                <div class="game-logo">🧩</div>
+                <h2>Welcome to Formula Builder!</h2>
+                <p class="description">Test your knowledge of business math formulas through interactive challenges.</p>
+                <div class="mode-selection">
+                    <h3>Choose Your Challenge:</h3>
+                    <div class="mode-grid">
+                        <button class="mode-btn" onclick="startGame('build')">
+                            <span class="mode-icon">🔨</span>
+                            <span class="mode-title">Build the Formula</span>
+                            <span class="mode-desc">Drag variables to complete formulas</span>
+                        </button>
+                        <button class="mode-btn" onclick="startGame('match')">
+                            <span class="mode-icon">🎯</span>
+                            <span class="mode-title">Match Formula</span>
+                            <span class="mode-desc">Match formulas to descriptions</span>
+                        </button>
+                        <button class="mode-btn" onclick="startGame('variable')">
+                            <span class="mode-icon">🔤</span>
+                            <span class="mode-title">Variable Meanings</span>
+                            <span class="mode-desc">Match variables with their meanings</span>
+                        </button>
+                        <button class="mode-btn" onclick="startGame('quick')">
+                            <span class="mode-icon">⚡</span>
+                            <span class="mode-title">Quick Challenge</span>
+                            <span class="mode-desc">60-second mixed challenge!</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="info-box">
+                    <p style="text-align: center; color: #666; font-size: 14px; margin-top: 20px;">
+                        ⚡ All questions are randomly selected from all difficulty levels for maximum learning!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameScreen" class="screen">
+            <div class="stats-bar">
+                <div class="stat-item"><span class="stat-label">Score</span><span class="stat-value" id="scoreDisplay">0</span></div>
+                <div class="stat-item"><span class="stat-label">Streak</span><span class="stat-value streak" id="streakDisplay">0🔥</span></div>
+                <div class="stat-item timer-container"><span class="stat-label">Time</span><div class="timer-bar"><div class="timer-fill" id="timerFill"></div><span class="timer-text" id="timerDisplay">60s</span></div></div>
+                <div class="stat-item"><span class="stat-label">Question</span><span class="stat-value" id="questionCount">1/10</span></div>
+            </div>
+            <div class="question-card">
+                <div class="question-header">
+                    <span class="question-category" id="categoryDisplay">Simple Interest</span>
+                    <span class="question-difficulty" id="difficultyBadge">Medium</span>
+                </div>
+                <div class="question-content">
+                    <h2 id="questionText">Loading question...</h2>
+                    <div id="questionSubtext" class="question-subtext"></div>
+                </div>
+                <div id="answerArea" class="answer-area"></div>
+                <div id="feedbackMessage" class="feedback-message"></div>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="skipQuestion()">Skip ⏭️</button>
+                <button class="btn-primary" id="submitBtn" onclick="submitAnswer()">Submit Answer ✓</button>
+            </div>
+        </div>
+
+        <div id="resultsScreen" class="screen">
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="results-icon" id="resultsIcon">🎉</div>
+                    <h2 id="resultsTitle">Great Job!</h2>
+                    <p id="resultsSubtitle">You've completed the challenge</p>
+                </div>
+                <div class="results-stats">
+                    <div class="result-stat"><div class="result-stat-value" id="finalScore">0</div><div class="result-stat-label">Total Score</div></div>
+                    <div class="result-stat"><div class="result-stat-value" id="accuracyPercent">0%</div><div class="result-stat-label">Accuracy</div></div>
+                    <div class="result-stat"><div class="result-stat-value" id="bestStreak">0🔥</div><div class="result-stat-label">Best Streak</div></div>
+                    <div class="result-stat"><div class="result-stat-value" id="fastestTime">0s</div><div class="result-stat-label">Fastest Answer</div></div>
+                </div>
+                <div class="results-breakdown">
+                    <div class="breakdown-section"><h3>✅ Formulas You Mastered</h3><div id="masteredList" class="formula-list"></div></div>
+                    <div class="breakdown-section"><h3>❌ Formulas to Review</h3><div id="reviewList" class="formula-list"></div></div>
+                </div>
+                <div class="motivational-quote" id="motivationalQuote">"Practice makes progress!"</div>
+                <div class="results-actions">
+                    <button class="btn-secondary" onclick="showReviewMode()">📚 Review Mode</button>
+                    <button class="btn-primary" onclick="resetGame()">🔄 Try Again</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="reviewScreen" class="screen">
+            <div class="review-card">
+                <div class="review-header"><h2>📚 Formula Review</h2><button class="btn-close" onclick="closeReview()">✕</button></div>
+                <div id="reviewContent" class="review-content"></div>
+                <div class="review-actions"><button class="btn-primary" onclick="resetGame()">Start New Challenge</button></div>
+            </div>
+        </div>
+    </div>
+    <div id="scorePopup" class="score-popup"></div>
+    <script src="formula_builder.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loans Quiz | BIZMATH</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="calcstyles.css" />
+  <link rel="stylesheet" href="quiz_styles.css" />
+</head>
+<body>
+
+  <!-- Fixed Header -->
+  <header>
+    <div class="header-left">
+      <h1>🧾 Loans Quiz</h1>
+    </div>
+    <nav class="header-nav">
+      <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+      <a href="quiz.html"><button class="main-btn">🎯 Quiz Hub</button></a>
+      <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    
+    <!-- Quiz Container -->
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <h2>Loans Quiz</h2>
+        <p class="quiz-subtitle">Assess your understanding of loan amortization and payment calculations</p>
+      </div>
+
+      <!-- Progress Indicator -->
+      <div id="progressSection" class="hidden">
+        <div class="progress-text">
+          <span id="progressText">Question 0 of 10</span>
+        </div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <!-- Score Summary (hidden initially) -->
+      <div id="scoreSummary" class="score-summary hidden">
+        <h3>🎉 Quiz Complete!</h3>
+        <div class="score-text" id="scoreText">You scored 0 out of 10!</div>
+        <div class="score-percentage" id="scorePercentage">0%</div>
+        <div class="score-message" id="scoreMessage"></div>
+      </div>
+
+      <!-- Questions Container -->
+      <div id="questionsContainer">
+        <div class="loading">Loading quiz questions...</div>
+      </div>
+
+      <!-- Quiz Actions -->
+      <div class="quiz-actions">
+        <button id="submitBtn" class="submit-btn hidden" onclick="submitQuiz()">Submit Quiz</button>
+        <button id="retryBtn" class="retry-btn hidden" onclick="retryQuiz()">🔄 Try Again</button>
+        <a href="quiz.html"><button class="nav-btn">⬅ Back to Quiz Hub</button></a>
+        <a href="BIZMATH.html"><button class="nav-btn">🏠 Return to Home</button></a>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="quiz_loans_data.js"></script>
+  <script src="quiz_loans_logic.js"></script>
+
+</body>
+</html>

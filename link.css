@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 110px;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #e6f0ff;
+  display: flex;
+  color: #333;
+}
+       .main-content section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border-top:#4b86b4 6px solid;
+            display: flex;
+            flex-direction: column;
+        }
+        .section-anchor {
+            position: relative;
+            scroll-margin-top: 110px;
+        }
+
+.main-content {
+        padding: 30px 30px 30px;
+  margin-left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: margin-left 0.3s ease;
+  position: relative;
+  z-index: 100; /* Lower than sidebar */
+        }
+        .main-content.shifted {
+  margin-left: 200px;
+}
+        .container {
+            margin-top: 20px;
+            padding: min(15px, 8%);
+            border-radius: 12px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .inline-div {
+            display: block;
+            text-align: center;
+        }
+                .highlight {
+            background: #e6f7ff;
+            border-left: 4px solid #4b86b4;
+            padding: 8px 12px;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+a {
+  color: #2a4d69;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-thickness: from-font;
+  text-decoration-skip-ink: auto;
+}
+
+/* Anchor-as-button pattern (for nav or call-to-action links) */
+.header-nav a,
+a.main-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #2a4d69;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+  text-decoration: none; /* buttons shouldn’t be underlined */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  -webkit-tap-highlight-color: transparent; /* cleaner tap on mobile */
+}
+
+/* Hover/focus states */
+.header-nav a:hover,
+.header-nav a:focus-visible,
+a.main-btn:hover,
+a.main-btn:focus-visible {
+  background: #4b86b4;
+  color: #ffe066;
+  outline: none;
+}
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  color: #1a2634;
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Only apply scaling on devices that support hover (prevents jagged look on touch) */
+@media (hover: hover) and (pointer: fine) {
+  .header-nav a:hover,
+  a.main-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+}
+
+/* Touch devices: no scaling to avoid aliasing/jagged edges */
+@media (hover: none) {
+  .header-nav a,
+  a.main-btn {
+    transform: none;
+  }
+}
+
+/* Better visible focus for keyboard users */
+.header-nav a:focus-visible,
+a.main-btn:focus-visible {
+  outline: 2px solid #ffe066;
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion settings */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Comfortable tap targets on phones */
+@media (max-width: 480px) {
+  .header-nav a,
+  a.main-btn {
+    min-height: 44px;
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+}

@@ -1,0 +1,666 @@
+/* ========================================
+   BIZMATH UNIVERSAL CALCULATOR STYLES
+   Based on Simple Interest Calculator Design
+   ======================================== */
+
+/* CSS Variables for Consistent Theming */
+:root {
+  --primary: #004aad;
+  --accent: #00a86b;
+  --bg: #f5f8ff;
+  --text: #222;
+  --card-bg: #fff;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+}
+
+/* ========================================
+   GLOBAL RESET & BASE STYLES
+   ======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   HEADER SECTION
+   ======================================== */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.2);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+header p {
+  margin-top: 5px;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+header nav {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ========================================
+   MAIN CONTENT BLOCKS
+   ======================================== */
+.block {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.block-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid var(--primary);
+}
+
+.block > p {
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ========================================
+   BLOCK 1: VARIABLE SELECTION
+   ======================================== */
+.variable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.var-btn {
+  background: linear-gradient(135deg, var(--primary), #0066dd);
+  color: white;
+  border: none;
+  padding: 20px 15px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 74, 173, 0.2);
+}
+
+.var-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 74, 173, 0.3);
+}
+
+.var-btn:active {
+  transform: translateY(-1px);
+}
+
+.var-btn.selected {
+  background: linear-gradient(135deg, var(--accent), #009959);
+  box-shadow: 0 6px 20px rgba(0, 168, 107, 0.4);
+}
+
+/* ========================================
+   BLOCK 1.1: FORMULA SELECTION
+   ======================================== */
+.formula-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.formula-btn,
+.formula-option {
+  background: white;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  padding: 15px 20px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.formula-btn:hover,
+.formula-option:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateX(5px);
+}
+
+.formula-option.selected {
+  background: var(--primary);
+  color: white;
+}
+
+/* ========================================
+   BLOCK 2: INPUT FIELDS
+   ======================================== */
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid var(--light-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.unit {
+  font-weight: 600;
+  color: var(--gray);
+  min-width: 60px;
+}
+
+/* ========================================
+   NAVIGATION BUTTONS
+   ======================================== */
+.main-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.main-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.2));
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn-primary:hover {
+  background: #0066dd;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.3);
+}
+
+.btn-secondary {
+  background: var(--gray);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background: #009959;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 168, 107, 0.3);
+}
+
+.btn-success:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.btn-success:disabled:hover {
+  background: #6c757d;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ========================================
+   BLOCK 3: GRESA SECTION
+   ======================================== */
+.gresa-section {
+  margin-top: 20px;
+}
+
+.gresa-item {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border-left: 5px solid var(--primary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+}
+
+.gresa-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gresa-item.slide-in {
+  animation: slideInFromLeft 0.6s ease-out forwards;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.gresa-item h3 {
+  color: var(--primary);
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.gresa-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.answer-highlight {
+  background: var(--accent);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 168, 107, 0.3);
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.5s ease-out;
+}
+
+.answer-highlight.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.answer-highlight.celebrate {
+  animation: celebrate 0.6s ease-out;
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   MATHJAX & MATHEMATICAL DISPLAY
+   ======================================== */
+.math-display {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  padding: 10px;
+  background: white;
+  border-radius: 6px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* MathJax responsive scaling */
+.math-display mjx-container {
+  max-width: 100% !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.math-display mjx-container svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablets and smaller devices */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  header {
+    padding: 15px 20px;
+  }
+
+  .block {
+    padding: 20px;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 640px) {
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  header p {
+    font-size: 0.85rem;
+  }
+
+  .block-title {
+    font-size: 1.2rem;
+  }
+
+  .variable-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .var-btn {
+    padding: 15px 12px;
+    font-size: 0.95rem;
+  }
+
+  .nav-buttons {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-success {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .input-group input {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+
+  /* Smaller math font on mobile */
+  .math-display {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+
+  .gresa-content {
+    font-size: 0.95rem;
+  }
+
+  .gresa-item {
+    padding: 15px;
+  }
+
+  .answer-highlight {
+    font-size: 1.1rem;
+    padding: 15px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .block {
+    padding: 15px;
+  }
+
+  .block-title {
+    font-size: 1.1rem;
+  }
+
+  .var-btn {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+
+  .formula-btn,
+  .formula-option {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+  }
+
+  .main-btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* MathJax responsive scaling for very small screens */
+  mjx-container[jax="CHTML"] {
+    font-size: 85% !important;
+  }
+
+  .math-display {
+    overflow-x: auto;
+    word-break: break-word;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  mjx-container {
+    overflow-x: auto;
+    display: block;
+    text-align: center;
+    max-width: 100%;
+  }
+
+  .container {
+    padding: 1rem;
+    max-width: 95%;
+  }
+}
+
+/* ========================================
+   MATHJAX RESPONSIVE STYLES
+   ======================================== */
+/* Ensure MathJax equations are responsive on all devices */
+.math-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 10px;
+}
+
+mjx-container {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Mobile-specific MathJax adjustments */
+@media (max-width: 768px) {
+  .math-display {
+    font-size: clamp(0.85rem, 2.5vw, 1rem);
+    padding: 8px;
+  }
+
+  mjx-container {
+    font-size: 90% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-display {
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+  }
+
+  mjx-container[jax="CHTML"] {
+    font-size: 85% !important;
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+.text-center {
+  text-align: center;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  header {
+    background: white;
+    color: var(--primary);
+    box-shadow: none;
+  }
+
+  .block {
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .nav-buttons,
+  .main-btn {
+    display: none;
+  }
+
+  .gresa-item {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

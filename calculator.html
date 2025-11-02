@@ -1,258 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>BIZMATH Calculator Navigation</title>
-<style>
-    :root {
-        --primary-color: #2a4d69;
-        --primary-hover: #4b86b4;
-        --highlight-color: #ffe066;
-        --bg-light: #f0f4fa;
-        --bg-hover: #e6f0ff;
-        --border-light: #b0c4de;
-        --text-dark: #2a4d69;
-        --max-width: 600px;
-    }
-
-    body {
-        font-family: 'Poppins', Arial, sans-serif;
-        background: var(--bg-light);
-        margin: 0;
-        padding: 0;
-    }
-
-    nav {
-        width: 100%;
-        background: #1a2634;
-        color: #fff;
-        padding: 18px 0;
-        margin-bottom: 32px;
-        border-radius: 0 0 12px 12px;
-        display: flex;
-        justify-content: center;
-        gap: 18px;
-        flex-wrap: wrap;
-        box-shadow: 0 2px 8px rgba(42,77,105,0.08);
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    .main-btn {
-        background: var(--primary-color);
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        padding: 12px 28px;
-        font-size: 1.08rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s, color 0.2s, transform 0.15s;
-        margin-bottom: 0;
-        box-shadow: 0 2px 8px rgba(42,77,105,0.05);
-    }
-
-    .main-btn:hover, .dropdown-content a:hover {
-        background: var(--primary-hover);
-        color: var(--highlight-color);
-        transform: translateY(-1px) scale(1.03);
-    }
-
-    .dropdown {
-        position: relative;
-        display: inline-block;
-    }
-
-    .dropdown-content {
-        display: none;
-        position: absolute;
-        left: 0;
-        top: 110%;
-        background: #fff;
-        min-width: 220px;
-        box-shadow: 0 4px 16px rgba(42,77,105,0.12);
-        border-radius: 8px;
-        z-index: 1000;
-        padding: 8px 0;
-        animation: fadeIn 0.2s;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px);}
-        to { opacity: 1; transform: translateY(0);}
-    }
-
-    .dropdown-content a {
-        color: var(--text-dark);
-        background: none;
-        text-align: left;
-        padding: 10px 24px;
-        border: none;
-        display: block;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background 0.2s, color 0.2s;
-        border-radius: 4px;
-    }
-
-    .nav-section {
-        max-width: var(--max-width);
-        margin: 40px auto;
-        background: #fff;
-        border-radius: 16px;
-        box-shadow: 0 4px 16px rgba(42,77,105,0.10);
-        padding: 40px 32px 32px 32px;
-    }
-
-    h2 {
-        color: var(--primary-color);
-        text-align: center;
-        margin-bottom: 32px;
-        font-size: 2rem;
-        letter-spacing: 1px;
-    }
-
-    .category {
-        margin-bottom: 32px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid var(--border-light);
-    }
-
-    .category:last-child {
-        border-bottom: none;
-    }
-
-    .category-title {
-        font-size: 1.18rem;
-        font-weight: 600;
-        color: #205081;
-        margin-bottom: 12px;
-        letter-spacing: 0.5px;
-    }
-
-    .button-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 8px;
-        padding-left: 18px;
-    }
-
-    .sub-btn {
-        width: 95%;
-        background: var(--bg-light);
-        color: var(--text-dark);
-        border: 1px solid var(--border-light);
-        padding: 10px 0;
-        font-weight: 500;
-        font-size: 1rem;
-        border-radius: 6px;
-        transition: background 0.2s, color 0.2s, transform 0.15s;
-        margin-bottom: 0;
-    }
-
-    .sub-btn:hover {
-        background: var(--bg-hover);
-        color: #205081;
-        transform: translateY(-1px) scale(1.03);
-    }
-
-    @media (max-width: 700px) {
-        .nav-section {
-            padding: 20px 8px;
-        }
-        h2 {
-            font-size: 1.3rem;
-        }
-        .main-btn, .sub-btn {
-            font-size: 0.95rem;
-            padding: 10px 0;
-        }
-        nav {
-            flex-direction: column;
-            gap: 8px;
-            padding: 12px 0;
-        }
-        .dropdown-content {
-            min-width: 160px;
-        }
-    }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator | BIZMATH</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="calcstyles.css" />
 </head>
 <body>
-<nav>
-    <a href="../BIZMATH.html#home">
-        <button class="main-btn">🏠 Home</button>
-    </a>
-    <div class="dropdown">
-        <button class="main-btn" id="topicsBtn">Topics to Calculate ▼</button>
-        <div class="dropdown-content" id="topicsMenu">
-            <a href="simple.html" class="main-btn">Simple Interest</a>
-            <a href="compound.html" class="main-btn">Compound Interest</a>
-            <a href="simple-annuity.html" class="main-btn">Simple Annuity</a>
-            <a href="ordinary-annuity.html" class="main-btn">Ordinary Annuity</a>
-            <a href="deferred-annuity.html" class="main-btn">Deferred Annuity</a>
-            <a href="stocks.html" class="main-btn">Stocks</a>
-            <a href="bonds.html" class="main-btn">Bonds</a>
-            <a href="consumer-loans.html" class="main-btn">Consumer Loans</a>
-            <a href="business-loans.html" class="main-btn">Business Loans</a>
-        </div>
-    </div>
-</nav>
-<section class="nav-section" aria-label="Calculator Navigation">
-    <h2 style="text-align:center;">Calculator Topics</h2>
-    <div class="category">
-        <div class="category-title" style="text-align:center;">A. Interests</div>
-        <div class="button-group" style="align-items:center;">
-            <a class="sub-btn" href="simple.html" style="text-align:center;">Simple Interest</a>
-            <a class="sub-btn" href="compound.html" style="text-align:center;">Compound Interest</a>
-        </div>
-    </div>
-    <div class="category">
-        <div class="category-title" style="text-align:center;">B. Annuities</div>
-        <div class="button-group" style="align-items:center;">
-            <a class="sub-btn" href="simple-annuity.html" style="text-align:center;">Simple Annuity</a>
-            <a class="sub-btn" href="ordinary-annuity.html" style="text-align:center;">Ordinary Annuity</a>
-            <a class="sub-btn" href="deferred-annuity.html" style="text-align:center;">Deferred Annuity</a>
-        </div>
-    </div>
-    <div class="category">
-        <div class="category-title" style="text-align:center;">C. Stocks</div>
-        <div style="display:flex; justify-content:center;">
-            <a class="main-btn" href="stocks.html" style="text-align:center;">Stocks</a>
-        </div>
-    </div>
-    <div class="category">
-        <div class="category-title" style="text-align:center;">D. Bonds</div>
-        <div style="display:flex; justify-content:center;">
-            <a class="main-btn" href="bonds.html" style="text-align:center;">Bonds</a>
-        </div>
-    </div>
-    <div class="category">
-        <div class="category-title" style="text-align:center;">E. Loans</div>
-        <div class="button-group" style="align-items:center;">
-            <a class="sub-btn" href="consumer-loans.html" style="text-align:center;">Consumer Loans</a>
-            <a class="sub-btn" href="business-loans.html" style="text-align:center;">Business Loans</a>
-        </div>
-    </div>
-</section>
-<script>
-const topicsBtn = document.getElementById('topicsBtn');
-const topicsMenu = document.getElementById('topicsMenu');
-let topicsOpen = false;
 
-topicsBtn.onclick = function() {
-  topicsOpen = !topicsOpen;
-  topicsMenu.style.display = topicsOpen ? 'block' : 'none';
-};
+  <!-- Fixed Header -->
+  <header>
+    <div class="header-left">
+      <h1>🧮 BIZMATH Calculator</h1>
+    </div>
+    <nav class="header-nav">
+      <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+      <a href="about.html"><button class="main-btn">ℹ️ About</button></a>
+    </nav>
+  </header>
 
-document.addEventListener('click', function(e) {
-  if (!topicsBtn.contains(e.target) && !topicsMenu.contains(e.target)) {
-    topicsMenu.style.display = 'none';
-    topicsOpen = false;
-  }
-});
-</script>
+  <!-- Main Content Area -->
+  <div class="main-content">
+    
+    <!-- Introduction -->
+    <section class="intro-section">
+      <h2>Choose Your Calculator</h2>
+      <p class="intro-text">Select a topic below to access interactive calculators with step-by-step GRESA solutions.</p>
+    </section>
+
+    <!-- Interests Section -->
+    <section>
+      <div class="section-header">
+        <h2>💰 Interest Calculators</h2>
+        <p class="section-desc">Calculate simple and compound interest with detailed solutions</p>
+      </div>
+      <div class="button-grid">
+        <a href="simple.html" class="calc-card">
+          <div class="calc-icon">📊</div>
+          <h3>Simple Interest</h3>
+          <p>Calculate I, F, P, r, or t using simple interest formulas</p>
+        </a>
+        <a href="compound.html" class="calc-card">
+          <div class="calc-icon">📈</div>
+          <h3>Compound Interest</h3>
+          <p>Find F, P, r, or t with compound interest calculations</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Annuities Section -->
+    <section>
+      <div class="section-header">
+        <h2>💵 Annuity Calculators</h2>
+        <p class="section-desc">Solve annuity problems with periodic payments</p>
+      </div>
+      <div class="button-grid">
+        <a href="simple_annuity.html" class="calc-card">
+          <div class="calc-icon">📅</div>
+          <h3>Simple Annuity</h3>
+          <p>Calculate future value, present value, and payments</p>
+        </a>
+        <a href="general_annuity.html" class="calc-card">
+          <div class="calc-icon">📆</div>
+          <h3>General Annuity</h3>
+          <p>Solve general annuity problems with different periods</p>
+        </a>
+        <a href="deferred_annuity.html" class="calc-card">
+          <div class="calc-icon">⏳</div>
+          <h3>Deferred Annuity</h3>
+          <p>Calculate deferred annuity values and payments</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Stocks Section -->
+    <section>
+      <div class="section-header">
+        <h2>📈 Stocks Calculator</h2>
+        <p class="section-desc">Learn how to compute stock values, dividends, and rates of return</p>
+      </div>
+      <div class="button-grid">
+        <a href="stocks.html" class="calc-card">
+          <div class="calc-icon">💼</div>
+          <h3>Stocks Calculator</h3>
+          <p>Calculate stock values, dividends, and investment returns</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bonds Section -->
+    <section>
+      <div class="section-header">
+        <h2>📜 Bonds Calculator</h2>
+        <p class="section-desc">Understand bond pricing, yield to maturity, and interest payments</p>
+      </div>
+      <div class="button-grid">
+        <a href="bonds.html" class="calc-card">
+          <div class="calc-icon">💎</div>
+          <h3>Bonds Calculator</h3>
+          <p>Determine bond prices, yields, and coupon payments</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Loans Section -->
+    <section>
+      <div class="section-header">
+        <h2>🏦 Loans Calculator</h2>
+        <p class="section-desc">Explore loan amortization, monthly payments, and total interest cost</p>
+      </div>
+      <div class="button-grid">
+        <a href="loans.html" class="calc-card">
+          <div class="calc-icon">💳</div>
+          <h3>Loans Calculator</h3>
+          <p>Calculate loan payments, amortization schedules, and interest</p>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
 </body>
 </html>

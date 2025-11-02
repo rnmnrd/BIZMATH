@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compound Interest Calculator - BIZMATH</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loan Calculator — BIZMATH</title>
+  <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="calculator.css">
-  <link rel="icon" href="images/favicon.png">
   
   <!-- Decimal.js for high-precision calculations -->
   <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
@@ -20,39 +20,25 @@
 <body>
   <div class="container">
     <header>
-      <h1>💰 Compound Interest Calculator</h1>
-      <p>Using the GRESA Method - Step by Step</p>
+      <h1>💳 BIZMATH: Loan Calculator</h1>
+      <p>Compute regular payment and total amount of interest using the GRESA method</p>
       <nav>
         <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
         <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
       </nav>
     </header>
     
-    <!-- BLOCK 1: Variable Selection -->
+    <!-- BLOCK 1: Choose What to Find -->
     <div id="block1" class="block">
       <h2 class="block-title">Step 1: Choose what to find</h2>
-      <p>Select the variable you want to calculate:</p>
+      <p>Select the value you want to calculate:</p>
       <div class="variable-grid">
-        <button class="var-btn" onclick="selectVariable('F')">Future Value (F)</button>
-        <button class="var-btn" onclick="selectVariable('P')">Principal (P)</button>
-        <button class="var-btn" onclick="selectVariable('r')">Nominal Rate (r)</button>
-        <button class="var-btn" onclick="selectVariable('t')">Time (t)</button>
+        <button class="var-btn" onclick="selectVariable('regular-payment')">💰 Regular Payment (R)</button>
+        <button class="var-btn" onclick="selectVariable('total-interest')">📊 Total Amount of Interest (I)</button>
       </div>
     </div>
     
-    <!-- BLOCK 1.1: Formula Selection (if multiple formulas exist) -->
-    <div id="block1_1" class="block hidden">
-      <h2 class="block-title">Step 1.1: Choose which formula to use</h2>
-      <p id="formula-prompt"></p>
-      <div id="formula-list" class="formula-list">
-        <!-- Formulas dynamically inserted -->
-      </div>
-      <div class="nav-buttons">
-        <button class="btn-secondary" onclick="goBack(1)">← Back</button>
-      </div>
-    </div>
-    
-    <!-- BLOCK 2: Input Values -->
+    <!-- BLOCK 2: Input Given Values -->
     <div id="block2" class="block hidden">
       <h2 class="block-title">Step 2: Enter the Given Values</h2>
       <p>Fill in the required values for your calculation:</p>
@@ -65,7 +51,7 @@
       </div>
     </div>
     
-    <!-- BLOCK 3: GRESA Solution -->
+    <!-- BLOCK 3: GRESA Solution Display -->
     <div id="block3" class="block hidden">
       <h2 class="block-title">Step 3: GRESA Method Solution</h2>
       
@@ -74,41 +60,50 @@
         <button class="btn-success" id="next-step-btn" onclick="showNextGRESAStep()">Next Step →</button>
       </div>
       
+      <!-- GRESA Steps -->
       <div class="gresa-section">
+        <!-- GIVEN -->
         <div class="gresa-item" id="gresa-item-given">
           <h3>📋 GIVEN</h3>
           <div id="gresa-given" class="gresa-content"></div>
         </div>
         
+        <!-- REQUIRED -->
         <div class="gresa-item" id="gresa-item-required">
           <h3>🎯 REQUIRED</h3>
           <div id="gresa-required" class="gresa-content"></div>
         </div>
         
+        <!-- EQUATION -->
         <div class="gresa-item" id="gresa-item-equation">
           <h3>📐 EQUATION</h3>
-          <div id="gresa-equation" class="gresa-content math-display"></div>
+          <div id="gresa-equation" class="gresa-content"></div>
         </div>
         
+        <!-- SOLUTION -->
         <div class="gresa-item" id="gresa-item-solution">
           <h3>🔢 SOLUTION</h3>
-          <div id="gresa-solution" class="gresa-content math-display"></div>
+          <div id="gresa-solution" class="gresa-content"></div>
         </div>
         
+        <!-- ANSWER -->
         <div class="gresa-item" id="gresa-item-answer">
           <h3>✅ ANSWER</h3>
           <div id="gresa-answer" class="gresa-content"></div>
         </div>
       </div>
       
-      <div class="answer-highlight" id="final-answer"></div>
+      <!-- Final Answer Box -->
+      <div id="final-answer" class="final-answer-box hidden"></div>
       
-      <div class="nav-buttons">
-        <button class="btn-primary" id="restart-btn" onclick="resetCalculator()" style="display:none;">🔄 Start Over</button>
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons" style="margin-top: 30px;">
+        <button class="btn-secondary" id="restart-btn" onclick="resetCalculator()" style="display: none;">🔄 Start New Calculation</button>
       </div>
     </div>
+    
   </div>
   
-  <script src="compound_interest.js"></script>
+  <script src="loans.js"></script>
 </body>
 </html>

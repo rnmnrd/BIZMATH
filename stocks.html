@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compound Interest Calculator - BIZMATH</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Stocks Calculator — BIZMATH</title>
+  <link rel="icon" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="calculator.css">
-  <link rel="icon" href="images/favicon.png">
   
   <!-- Decimal.js for high-precision calculations -->
   <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
@@ -20,39 +20,59 @@
 <body>
   <div class="container">
     <header>
-      <h1>💰 Compound Interest Calculator</h1>
-      <p>Using the GRESA Method - Step by Step</p>
+      <h1>💼 BIZMATH: Stocks Calculator</h1>
+      <p>Learn step-by-step using the GRESA Method</p>
       <nav>
         <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
         <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
       </nav>
     </header>
     
-    <!-- BLOCK 1: Variable Selection -->
+    <!-- BLOCK 1: Choose What to Find -->
     <div id="block1" class="block">
       <h2 class="block-title">Step 1: Choose what to find</h2>
-      <p>Select the variable you want to calculate:</p>
+      <p>Select the value you want to calculate:</p>
       <div class="variable-grid">
-        <button class="var-btn" onclick="selectVariable('F')">Future Value (F)</button>
-        <button class="var-btn" onclick="selectVariable('P')">Principal (P)</button>
-        <button class="var-btn" onclick="selectVariable('r')">Nominal Rate (r)</button>
-        <button class="var-btn" onclick="selectVariable('t')">Time (t)</button>
+        <button class="var-btn" onclick="selectVariable('dividend-per-share')">🧾 Dividend per Share</button>
+        <button class="var-btn" onclick="selectVariable('total-dividend')">💰 Total Dividend</button>
+        <button class="var-btn" onclick="selectVariable('total-shares')">📊 Total Number of Shares</button>
+        <button class="var-btn" onclick="selectVariable('stock-yield')">📈 Stock Yield Ratio</button>
       </div>
     </div>
     
-    <!-- BLOCK 1.1: Formula Selection (if multiple formulas exist) -->
+    <!-- BLOCK 1.1: Choose Formula (for Dividend per Share) -->
     <div id="block1_1" class="block hidden">
       <h2 class="block-title">Step 1.1: Choose which formula to use</h2>
-      <p id="formula-prompt"></p>
-      <div id="formula-list" class="formula-list">
-        <!-- Formulas dynamically inserted -->
+      <p id="formula-prompt">Select the formula based on the given information:</p>
+      <div class="formula-list">
+        <button class="formula-btn" onclick="selectFormula('dps-method1')">
+          <div class="formula-title">Using Total Dividend and Total Shares</div>
+          <div class="formula-text">Dividend per Share = Total Dividend ÷ Total Shares</div>
+        </button>
+        <button class="formula-btn" onclick="selectFormula('dps-method2')">
+          <div class="formula-title">Using Par Value and Dividend Percentage</div>
+          <div class="formula-text">Dividend per Share = Par Value × Dividend Percentage</div>
+        </button>
       </div>
       <div class="nav-buttons">
         <button class="btn-secondary" onclick="goBack(1)">← Back</button>
       </div>
     </div>
     
-    <!-- BLOCK 2: Input Values -->
+    <!-- BLOCK 1.1.1: Comparison Option (for Stock Yield Ratio) -->
+    <div id="block1_1_1" class="block hidden">
+      <h2 class="block-title">Step 1.1: Comparison Option</h2>
+      <p style="font-size: 1.1em; margin-bottom: 20px;">Does the problem involve comparing two corporations, business firms, or organizations?</p>
+      <div class="variable-grid">
+        <button class="var-btn" onclick="selectComparison('no')">No - Single Calculation</button>
+        <button class="var-btn" onclick="selectComparison('yes')">Yes - Compare Two Entities</button>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn-secondary" onclick="goBack(1)">← Back</button>
+      </div>
+    </div>
+    
+    <!-- BLOCK 2: Input Given Values -->
     <div id="block2" class="block hidden">
       <h2 class="block-title">Step 2: Enter the Given Values</h2>
       <p>Fill in the required values for your calculation:</p>
@@ -65,7 +85,7 @@
       </div>
     </div>
     
-    <!-- BLOCK 3: GRESA Solution -->
+    <!-- BLOCK 3: GRESA Solution Display -->
     <div id="block3" class="block hidden">
       <h2 class="block-title">Step 3: GRESA Method Solution</h2>
       
@@ -74,41 +94,49 @@
         <button class="btn-success" id="next-step-btn" onclick="showNextGRESAStep()">Next Step →</button>
       </div>
       
+      <!-- GRESA Steps -->
       <div class="gresa-section">
+        <!-- GIVEN -->
         <div class="gresa-item" id="gresa-item-given">
           <h3>📋 GIVEN</h3>
           <div id="gresa-given" class="gresa-content"></div>
         </div>
         
+        <!-- REQUIRED -->
         <div class="gresa-item" id="gresa-item-required">
           <h3>🎯 REQUIRED</h3>
           <div id="gresa-required" class="gresa-content"></div>
         </div>
         
+        <!-- EQUATION -->
         <div class="gresa-item" id="gresa-item-equation">
           <h3>📐 EQUATION</h3>
           <div id="gresa-equation" class="gresa-content math-display"></div>
         </div>
         
+        <!-- SOLUTION -->
         <div class="gresa-item" id="gresa-item-solution">
           <h3>🔢 SOLUTION</h3>
           <div id="gresa-solution" class="gresa-content math-display"></div>
         </div>
         
+        <!-- ANSWER -->
         <div class="gresa-item" id="gresa-item-answer">
           <h3>✅ ANSWER</h3>
           <div id="gresa-answer" class="gresa-content"></div>
         </div>
       </div>
       
+      <!-- Final Answer Box -->
       <div class="answer-highlight" id="final-answer"></div>
       
+      <!-- Restart Button -->
       <div class="nav-buttons">
-        <button class="btn-primary" id="restart-btn" onclick="resetCalculator()" style="display:none;">🔄 Start Over</button>
+        <button class="btn-primary" id="restart-btn" onclick="resetCalculator()" style="display: none;">🔄 Start Over</button>
       </div>
     </div>
   </div>
   
-  <script src="compound_interest.js"></script>
+  <script src="stocks.js"></script>
 </body>
 </html>

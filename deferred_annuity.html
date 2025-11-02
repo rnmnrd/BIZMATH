@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Deferred Annuity Calculator — BIZMATH</title>
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="calculator.css">
+  
+  <!-- Decimal.js for high-precision calculations -->
+  <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
+  
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>💰 BIZMATH: Deferred Annuity Calculator</h1>
+      <p>Compute the present value of a deferred annuity using the GRESA method</p>
+      <nav>
+        <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+        <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
+      </nav>
+    </header>
+    
+    <!-- BLOCK 1: Input Section -->
+    <div id="block1" class="block">
+      <h2 class="block-title">Fill in the required values for your calculations</h2>
+      <p>Enter all values to calculate the Present Value (P) of a deferred annuity:</p>
+      
+      <div id="input-container">
+        <div class="input-group">
+          <label for="input-R">Regular Payment (R)</label>
+          <div class="input-wrapper">
+            <input type="number" id="input-R" step="any" placeholder="Enter regular payment" required>
+            <span class="unit">₱</span>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="input-r">Nominal Rate (r)</label>
+          <div class="input-wrapper">
+            <input type="number" id="input-r" step="any" placeholder="Enter rate (e.g., 0.10 for 10%)" required>
+            <span class="unit">(decimal)</span>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="input-m">Frequency of Conversion (m)</label>
+          <div class="input-wrapper">
+            <input type="number" id="input-m" step="1" placeholder="Enter frequency (times per year)" required>
+            <span class="unit">(times/year)</span>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="input-t">Term (t)</label>
+          <div class="input-wrapper">
+            <input type="number" id="input-t" step="any" placeholder="Enter term" required>
+            <span class="unit">years</span>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="input-k">Period of Deferral (k)</label>
+          <div class="input-wrapper">
+            <input type="number" id="input-k" step="1" placeholder="Enter deferral periods" required>
+            <span class="unit">periods</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="nav-buttons">
+        <button class="btn-primary" onclick="calculateResult()">Calculate →</button>
+      </div>
+    </div>
+    
+    <!-- BLOCK 2: GRESA Solution Display -->
+    <div id="block2" class="block hidden">
+      <h2 class="block-title">Step 2: GRESA Method Solution</h2>
+      
+      <!-- Next Step Button directly under title -->
+      <div class="nav-buttons" style="margin-top: 15px; margin-bottom: 25px;">
+        <button class="btn-success" id="next-step-btn" onclick="showNextGRESAStep()">Next Step →</button>
+      </div>
+      
+      <!-- GRESA Steps -->
+      <div class="gresa-section">
+        <!-- GIVEN -->
+        <div class="gresa-item" id="gresa-item-given">
+          <h3>📋 GIVEN</h3>
+          <div id="gresa-given" class="gresa-content"></div>
+        </div>
+        
+        <!-- REQUIRED -->
+        <div class="gresa-item" id="gresa-item-required">
+          <h3>🎯 REQUIRED</h3>
+          <div id="gresa-required" class="gresa-content"></div>
+        </div>
+        
+        <!-- EQUATION -->
+        <div class="gresa-item" id="gresa-item-equation">
+          <h3>📐 EQUATION</h3>
+          <div id="gresa-equation" class="gresa-content math-display"></div>
+        </div>
+        
+        <!-- SOLUTION -->
+        <div class="gresa-item" id="gresa-item-solution">
+          <h3>🔢 SOLUTION</h3>
+          <div id="gresa-solution" class="gresa-content math-display"></div>
+        </div>
+        
+        <!-- ANSWER -->
+        <div class="gresa-item" id="gresa-item-answer">
+          <h3>✅ ANSWER</h3>
+          <div id="gresa-answer" class="gresa-content"></div>
+        </div>
+      </div>
+      
+      <!-- Final Answer Box -->
+      <div class="answer-highlight" id="final-answer"></div>
+      
+      <!-- Restart Button -->
+      <div class="nav-buttons">
+        <button class="btn-primary" id="restart-btn" onclick="resetCalculator()" style="display: none;">🔄 Start Over</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="deferred_annuity.js"></script>
+</body>
+</html>

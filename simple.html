@@ -1,445 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple Interest Calculator</title>
-  <style>
-    body {
-      font-family: 'Poppins', Arial, sans-serif;
-      background: #f0f4fa;
-      margin: 0;
-      padding: 20px;
-      color: #2a4d69;
-    }
-
-    .calculator {
-      max-width: 600px;
-      margin: 40px auto;
-      background: #fff;
-      border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      text-align: center;
-      color: #2a4d69;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-weight: 600;
-    }
-
-    input, button, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 6px;
-      margin-bottom: 16px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    button {
-      background: #2a4d69;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 600;
-    }
-
-    button:hover {
-      background: #4b86b4;
-    }
-
-    .steps {
-      margin-top: 20px;
-      padding: 15px;
-      border: 1px solid #b0c4de;
-      border-radius: 8px;
-      background: #e6f0ff;
-    }
-
-    .step {
-      margin-bottom: 18px;
-      display: none;
-      font-size: 1.08rem;
-    }
-
-    .highlight {
-      background: #ffe066;
-      padding: 3px 6px;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    .explanation {
-      margin-top: 8px;
-      color: #205081;
-      font-size: 0.98rem;
-      background: #f8fafc;
-      border-left: 3px solid #b0c4de;
-      padding: 8px 12px;
-      border-radius: 6px;
-    }
-
-    .step-title {
-      font-weight: bold;
-      margin-bottom: 4px;
-      color: #2a4d69;
-    }
-
-    .alert-box {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffe066;
-      border-radius: 8px;
-      padding: 12px 16px;
-      margin-bottom: 18px;
-      font-size: 1rem;
-    }
-
-    header {
-      width: 100%;
-      background: #1a2634;
-      color: #fff;
-      padding: 18px 0;
-      margin-bottom: 32px;
-      border-radius: 0 0 12px 12px;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .main-btn {
-      width: auto;
-      padding: 10px 24px;
-      background: #2a4d69;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.3s;
-      font-weight: 600;
-    }
-
-    .main-btn:hover {
-      background: #4b86b4;
-    }
-
-    .dropdown {
-      position: relative;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      left: 0;
-      top: 110%;
-      background: #fff;
-      min-width: 220px;
-      box-shadow: 0 4px 16px rgba(42,77,105,0.12);
-      border-radius: 8px;
-      z-index: 1000;
-    }
-
-    .dropdown-content a {
-      color: #2a4d69;
-      background: none;
-      text-align: left;
-      padding: 10px 18px;
-      border: none;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .dropdown-content a:hover {
-      background: #f0f4fa;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simple Interest Calculator — BIZMATH</title>
+  <link rel="icon" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="calculator.css">
+  
+  <!-- Decimal.js for high-precision calculations -->
+  <script src="https://cdn.jsdelivr.net/npm/decimal.js@10.4.3/decimal.min.js"></script>
+  
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-<header style="width:100%; background:#1a2634; color:#fff; padding:18px 0; margin-bottom:32px; border-radius:0 0 12px 12px;">
-  <nav style="display:flex; justify-content:center; gap:18px; flex-wrap:wrap; align-items:center;">
-    <div class="dropdown" style="position:relative;">
-      <button class="main-btn" id="topicsBtn" style="width:auto; padding:10px 24px; cursor:pointer;">
-        Topics to Calculate ▼
-      </button>
-      <div class="dropdown-content" id="topicsMenu" style="
-        display:none;
-        position:absolute;
-        left:0;
-        top:110%;
-        background:#fff;
-        min-width:220px;
-        box-shadow:0 4px 16px rgba(42,77,105,0.12);
-        border-radius:8px;
-        z-index:1000;
-        ">
-        <a href="simple.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Simple Interest</a>
-        <a href="compound-interest/compound-interest.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Compound Interest</a>
-        <a href="simple-annuity.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Simple Annuity</a>
-        <a href="ordinary-annuity.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Ordinary Annuity</a>
-        <a href="deferred-annuity.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Deferred Annuity</a>
-        <a href="stocks.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Stocks</a>
-        <a href="bonds.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Bonds</a>
-        <a href="consumer-loans.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Consumer Loans</a>
-        <a href="business-loans.html" class="main-btn" style="color:#2a4d69; background:none; text-align:left; padding:10px 18px; border:none;">Business Loans</a>
+  <div class="container">
+    <header>
+      <h1>🧮 BIZMATH: Simple Interest Calculator</h1>
+      <p>Learn step-by-step using the GRESA Method</p>
+        <nav>
+          <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+          <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
+        </nav>
+    </header>
+    
+    <!-- BLOCK 1: Choose What to Find -->
+    <div id="block1" class="block">
+      <h2 class="block-title">Step 1: Choose what to find</h2>
+      <p>Select the variable you want to calculate:</p>
+      <div class="variable-grid">
+        <button class="var-btn" onclick="selectVariable('Is')">Simple Interest (Iₛ)</button>
+        <button class="var-btn" onclick="selectVariable('F')">Future Value (F)</button>
+        <button class="var-btn" onclick="selectVariable('P')">Principal (P)</button>
+        <button class="var-btn" onclick="selectVariable('r')">Rate (r)</button>
+        <button class="var-btn" onclick="selectVariable('t')">Time (t)</button>
       </div>
     </div>
-  </nav>
-</header>
-
-<div class="calculator">
-  <h2>Simple Interest Calculator (GRESA)</h2>
-  <div class="alert-box">
-    <strong>Note:</strong> Please enter the <b>Rate (R)</b> as a decimal.<br>
-    For example, 5% = <b>0.05</b>, 12% = <b>0.12</b>, etc.<br>
-    This calculator does <b>not</b> divide by 100.
-  </div>
-  <!-- Required Selection -->
-  <label for="required">Required:</label>
-  <select id="required" onchange="updateInputs()">
-    <option value="SI">Simple Interest (SI)</option>
-    <option value="P">Principal (P)</option>
-    <option value="R">Rate (R)</option>
-    <option value="T">Time (T)</option>
-  </select>
-
-  <!-- Inputs -->
-  <div id="input-principal">
-    <label for="principal">Principal (P):</label>
-    <input type="number" id="principal" placeholder="Enter principal amount">
-  </div>
-  <div id="input-rate">
-    <label for="rate">Rate of Interest (R as decimal):</label>
-    <input type="number" id="rate" step="any" placeholder="Enter rate (e.g. 0.05 for 5%)">
-  </div>
-  <div id="input-time">
-    <label for="time">Time (T in years):</label>
-    <input type="number" id="time" placeholder="Enter time in years">
-  </div>
-  <div id="input-si" style="display:none;">
-    <label for="si">Simple Interest (SI):</label>
-    <input type="number" id="si" placeholder="Enter simple interest">
-  </div>
-
-  <button onclick="startCalculation()">Start</button>
-
-  <!-- Step by Step Solution -->
-  <div id="solution" class="steps" style="display:none;">
-    <div id="step1" class="step">
-      <div class="step-title"><span class="highlight">G</span> Given</div>
-      <div id="given-values"></div>
-      <div class="explanation" id="given-explanation"></div>
-    </div>
-    <div id="step2" class="step">
-      <div class="step-title"><span class="highlight">R</span> Required</div>
-      <div>
-        <b>Find:</b> <span class="highlight" id="find-variable"></span>
+    
+    <!-- BLOCK 1.1: Choose Formula (Conditional) -->
+    <div id="block1_1" class="block hidden">
+      <h2 class="block-title">Step 1.1: Choose which formula to use</h2>
+      <p id="formula-prompt"></p>
+      <div id="formula-list" class="formula-list">
+        <!-- Formulas dynamically inserted -->
       </div>
-      <div class="explanation" id="required-explanation"></div>
-    </div>
-    <div id="step3" class="step">
-      <div class="step-title"><span class="highlight">E</span> Equation</div>
-      <div>
-        <b>Formula:</b> <span id="formula"></span>
+      <div class="nav-buttons">
+        <button class="btn-secondary" onclick="goBack(1)">← Back</button>
       </div>
-      <div class="explanation" id="formula-explanation"></div>
     </div>
-    <div id="step4" class="step">
-      <div class="step-title"><span class="highlight">S</span> Solution</div>
-      <div id="substitution"></div>
-      <div class="explanation" id="substitution-explanation"></div>
-    </div>
-    <div id="step5" class="step">
-      <div class="step-title"><span class="highlight">A</span> Answer</div>
-      <div>
-        <span id="final-answer"></span>
+    
+    <!-- BLOCK 2: Input Given Values -->
+    <div id="block2" class="block hidden">
+      <h2 class="block-title">Step 2: Enter the Given Values</h2>
+      <p>Fill in the required values for your calculation:</p>
+      <div id="input-container">
+        <!-- Inputs dynamically generated -->
       </div>
-      <div class="explanation" id="answer-explanation"></div>
+      <div class="nav-buttons">
+        <button class="btn-secondary" onclick="goBack(2)">← Back</button>
+        <button class="btn-primary" onclick="calculateResult()">Next: Show Solution →</button>
+      </div>
     </div>
-    <!-- Progressive button -->
-    <button id="nextBtn" onclick="showNextStep()">Next Step</button>
+    
+    <!-- BLOCK 3: GRESA Solution -->
+    <div id="block3" class="block hidden">
+      <h2 class="block-title">Step 3: GRESA Method Solution</h2>
+      
+      <!-- Next Step Button directly under title -->
+      <div class="nav-buttons" style="margin-top: 15px; margin-bottom: 25px;">
+        <button class="btn-success" id="next-step-btn" onclick="showNextGRESAStep()">Next Step →</button>
+      </div>
+      
+      <div class="gresa-section">
+        <div class="gresa-item" id="gresa-item-given">
+          <h3>📋 GIVEN</h3>
+          <div id="gresa-given" class="gresa-content"></div>
+        </div>
+        
+        <div class="gresa-item" id="gresa-item-required">
+          <h3>🎯 REQUIRED</h3>
+          <div id="gresa-required" class="gresa-content"></div>
+        </div>
+        
+        <div class="gresa-item" id="gresa-item-equation">
+          <h3>📐 EQUATION</h3>
+          <div id="gresa-equation" class="gresa-content math-display"></div>
+        </div>
+        
+        <div class="gresa-item" id="gresa-item-solution">
+          <h3>🔢 SOLUTION</h3>
+          <div id="gresa-solution" class="gresa-content math-display"></div>
+        </div>
+        
+        <div class="gresa-item" id="gresa-item-answer">
+          <h3>✅ ANSWER</h3>
+          <div id="gresa-answer" class="gresa-content"></div>
+        </div>
+      </div>
+      
+      <div class="answer-highlight" id="final-answer"></div>
+      
+      <div class="nav-buttons">
+        <button class="btn-primary" id="restart-btn" onclick="resetCalculator()" style="display:none;">🔄 Start Over</button>
+      </div>
+    </div>
   </div>
-</div>
-
-<script>
-let currentStep = 0;
-
-// Dropdown menu logic for click-to-toggle
-const topicsBtn = document.getElementById('topicsBtn');
-const topicsMenu = document.getElementById('topicsMenu');
-let topicsOpen = false;
-
-topicsBtn.onclick = function() {
-  topicsOpen = !topicsOpen;
-  topicsMenu.style.display = topicsOpen ? 'block' : 'none';
-};
-
-// Optional: Hide menu when clicking outside
-document.addEventListener('click', function(e) {
-  if (!topicsBtn.contains(e.target) && !topicsMenu.contains(e.target)) {
-    topicsMenu.style.display = 'none';
-    topicsOpen = false;
-  }
-});
-
-function updateInputs() {
-  const req = document.getElementById("required").value;
-  // Show/hide inputs based on what is required
-  document.getElementById("input-principal").style.display = (req === "P") ? "none" : "";
-  document.getElementById("input-rate").style.display = (req === "R") ? "none" : "";
-  document.getElementById("input-time").style.display = (req === "T") ? "none" : "";
-  document.getElementById("input-si").style.display = (req === "SI") ? "none" : "";
-  // Show SI input if solving for P, R, or T
-  if (req === "P" || req === "R" || req === "T") {
-    document.getElementById("input-si").style.display = "";
-  }
-}
-
-function startCalculation() {
-  currentStep = 0;
-  document.querySelectorAll('.step').forEach(s => s.style.display = "none");
-  document.getElementById("solution").style.display = "block";
-  document.getElementById("nextBtn").style.display = "inline-block";
-
-  const req = document.getElementById("required").value;
-  let P = parseFloat(document.getElementById("principal").value);
-  let R = parseFloat(document.getElementById("rate").value);
-  let T = parseFloat(document.getElementById("time").value);
-  let SI = parseFloat(document.getElementById("si").value);
-
-  // Validation
-  let valid = true;
-  let givenText = "";
-  let givenExp = "";
-  let findText = "";
-  let formulaText = "";
-  let formulaExp = "";
-  let substText = "";
-  let substExp = "";
-  let answerText = "";
-  let answerExp = "";
-
-  if (req === "SI") {
-    if (isNaN(P) || isNaN(R) || isNaN(T)) valid = false;
-    givenText = `<b>Principal (P):</b> ${P}<br><b>Rate (R):</b> ${R} (decimal)<br><b>Time (T):</b> ${T} years`;
-    givenExp = "These are the values provided in the problem. The principal is the amount of money invested or borrowed, the rate is the annual interest as a decimal, and time is the duration in years.";
-    findText = "Simple Interest (SI)";
-    formulaText = "SI = P × R × T";
-    formulaExp = "Multiply the principal, rate (as decimal), and time to get the simple interest.";
-    substText = `SI = ${P} × ${R} × ${T}`;
-    // Detailed solution:
-    let top = P * R * T;
-    substExp = `First, multiply the principal and rate:<br>
-    <b>${P} × ${R} = ${(P*R).toFixed(2)}</b><br>
-    Then, multiply by time:<br>
-    <b>${(P*R).toFixed(2)} × ${T} = ${top.toFixed(2)}</b>`;
-    let result = top;
-    answerText = `SI = <b>${result.toFixed(2)}</b>`;
-    answerExp = "This is the final result: the simple interest earned or paid for the given principal, rate, and time.";
-  } else if (req === "P") {
-    if (isNaN(SI) || isNaN(R) || isNaN(T)) valid = false;
-    givenText = `<b>Simple Interest (SI):</b> ${SI}<br><b>Rate (R):</b> ${R} (decimal)<br><b>Time (T):</b> ${T} years`;
-    givenExp = "These are the values provided in the problem. The simple interest is the total interest earned or paid, the rate is the annual interest as a decimal, and time is the duration in years.";
-    findText = "Principal (P)";
-    formulaText = "P = SI / (R × T)";
-    formulaExp = "Divide the simple interest by the product of rate (as decimal) and time to get the principal.";
-    substText = `P = ${SI} / (${R} × ${T})`;
-    let bottom = R * T;
-    substExp = `First, multiply the rate and time:<br>
-    <b>${R} × ${T} = ${bottom.toFixed(2)}</b><br>
-    Then, divide the simple interest by this result:<br>
-    <b>${SI} ÷ ${bottom.toFixed(2)} = ${(SI/bottom).toFixed(2)}</b>`;
-    let result = SI / bottom;
-    answerText = `P = <b>${result.toFixed(2)}</b>`;
-    answerExp = "This is the original principal amount that would result in the given simple interest.";
-  } else if (req === "R") {
-    if (isNaN(SI) || isNaN(P) || isNaN(T)) valid = false;
-    givenText = `<b>Simple Interest (SI):</b> ${SI}<br><b>Principal (P):</b> ${P}<br><b>Time (T):</b> ${T} years`;
-    givenExp = "These are the values provided in the problem. The simple interest is the total interest earned or paid, the principal is the amount invested or borrowed, and time is the duration in years.";
-    findText = "Rate (R)";
-    formulaText = "R = SI / (P × T)";
-    formulaExp = "Divide the simple interest by the product of principal and time to get the rate (as decimal).";
-    substText = `R = ${SI} / (${P} × ${T})`;
-    let bottom = P * T;
-    substExp = `First, multiply the principal and time:<br>
-    <b>${P} × ${T} = ${bottom.toFixed(2)}</b><br>
-    Then, divide the simple interest by this result:<br>
-    <b>${SI} ÷ ${bottom.toFixed(2)} = ${(SI/bottom).toFixed(4)}</b>`;
-    let result = SI / bottom;
-    answerText = `R = <b>${result.toFixed(4)}</b> (decimal)`;
-    answerExp = "This is the annual interest rate (as a decimal) that would result in the given simple interest.";
-  } else if (req === "T") {
-    if (isNaN(SI) || isNaN(P) || isNaN(R)) valid = false;
-    givenText = `<b>Simple Interest (SI):</b> ${SI}<br><b>Principal (P):</b> ${P}<br><b>Rate (R):</b> ${R} (decimal)`;
-    givenExp = "These are the values provided in the problem. The simple interest is the total interest earned or paid, the principal is the amount invested or borrowed, and the rate is the annual interest as a decimal.";
-    findText = "Time (T)";
-    formulaText = "T = SI / (P × R)";
-    formulaExp = "Divide the simple interest by the product of principal and rate (as decimal) to get the time.";
-    substText = `T = ${SI} / (${P} × ${R})`;
-    let bottom = P * R;
-    substExp = `First, multiply the principal and rate:<br>
-    <b>${P} × ${R} = ${bottom.toFixed(2)}</b><br>
-    Then, divide the simple interest by this result:<br>
-    <b>${SI} ÷ ${bottom.toFixed(2)} = ${(SI/bottom).toFixed(2)}</b>`;
-    let result = SI / bottom;
-    answerText = `T = <b>${result.toFixed(2)} years</b>`;
-    answerExp = "This is the time period required to earn or pay the given simple interest.";
-  }
-
-  if (!valid) {
-    alert("Please enter valid numbers for all required fields.");
-    document.getElementById("solution").style.display = "none";
-    return;
-  }
-
-  // Fill step-by-step values
-  document.getElementById("given-values").innerHTML = givenText;
-  document.getElementById("given-explanation").innerHTML = givenExp;
-  document.getElementById("find-variable").textContent = findText;
-  document.getElementById("required-explanation").textContent = "This is the variable you are asked to solve for.";
-  document.getElementById("formula").innerHTML = formulaText;
-  document.getElementById("formula-explanation").innerHTML = formulaExp;
-  document.getElementById("substitution").innerHTML = substText;
-  document.getElementById("substitution-explanation").innerHTML = substExp;
-  document.getElementById("final-answer").innerHTML = answerText;
-  document.getElementById("answer-explanation").innerHTML = answerExp;
-
-  showStep(1);
-}
-
-function showStep(stepNum) {
-  document.querySelectorAll('.step').forEach(s => s.style.display = "none");
-  for(let i=1; i<=stepNum; i++) {
-    let step = document.getElementById("step" + i);
-    if(step) step.style.display = "block";
-  }
-  // Hide next button if last step
-  if(stepNum === 5) {
-    document.getElementById("nextBtn").style.display = "none";
-  } else {
-    document.getElementById("nextBtn").style.display = "inline-block";
-  }
-}
-
-function showNextStep() {
-  currentStep++;
-  if(currentStep <= 5) {
-    showStep(currentStep);
-  }
-}
-
-// Initialize input visibility on page load
-window.onload = updateInputs;
-</script>
-
+  
+  <script src="simple_interest.js"></script>
 </body>
 </html>
