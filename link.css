@@ -73,7 +73,7 @@ a.main-btn {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: #2a4d69;
+  /* Remove background to let other styles handle it */
   color: #fff;
   border: none;
   border-radius: 6px;
@@ -91,7 +91,7 @@ a.main-btn {
 .header-nav a:focus-visible,
 a.main-btn:hover,
 a.main-btn:focus-visible {
-  background: #4b86b4;
+  /* Remove background to let other styles handle it */
   color: #ffe066;
   outline: none;
 }

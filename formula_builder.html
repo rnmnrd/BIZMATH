@@ -3,23 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formula Builder Challenge - BIZMATH</title>
+    <title>Formula Builder Challenge | BIZMATH</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="calcstyles.css">
     <link rel="stylesheet" href="formula_builder.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
+  <!-- Fixed Header -->
+  <header>
+    <div class="header-left">
+      <h1>BIZMATH</h1>
+    </div>
+    <nav class="header-nav">
+            <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+            <a href="about.html"><button class="main-btn">ℹ️ About</button></a>
+            <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
+            <a href="formula_builder.html"><button class="main-btn">🧩 Games</button></a>
+            <a href="quiz.html"><button class="main-btn">🎯 Quiz Center</button></a>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
     <div class="game-container">
-        <header class="game-header">
-            <div class="header-left">
-                <h1>🎯 Formula Builder Challenge</h1>
-                <p class="subtitle">Build formulas, match meanings, master business math!</p>
-            </div>
-            <div class="header-right">
-                <button class="btn-home" onclick="window.location.href='BIZMATH.html'">🏠 Home</button>
-            </div>
-        </header>
 
         <div id="startScreen" class="screen active">
             <div class="start-card">
@@ -117,7 +126,9 @@
             </div>
         </div>
     </div>
+    </div>
     <div id="scorePopup" class="score-popup"></div>
     <script src="formula_builder.js"></script>
+  </div>
 </body>
 </html>

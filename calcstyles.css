@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* == site-wide CSS variables (ensure pages that set/use these keep consistent) == */
+:root{
+  --header-height: 120px; /* default; pages may update via JS based on actual header height */
+  --content-padding: calc(var(--header-height) + 2rem);
+  --primary-color: #004aad;
+  --accent-color: #0066dd;
+  --bg-color: #e6f0ff;
+  --text-color: #333;
+  --muted-color: #666;
+}
+
 /* ========== BASE RESET & LAYOUT ========== */
 html {
   scroll-behavior: smooth;
@@ -9,8 +20,8 @@ html {
 body {
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
-  background: #e6f0ff;
-  color: #333;
+  background: var(--bg-color);
+  color: var(--text-color);
   min-height: 100vh;
 }
 
@@ -20,7 +31,7 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  background: linear-gradient(135deg, #004aad, #0066dd);
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: #fff;
   display: flex;
   flex-wrap: wrap;
@@ -33,7 +44,7 @@ header {
 }
 
 header h1 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   margin: 0;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
@@ -74,7 +85,7 @@ header h1 {
 
 /* ========== MAIN CONTENT ========== */
 .main-content {
-  padding: 140px 30px 30px;
+  padding: 160px 30px 30px;
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -271,7 +282,7 @@ section {
   }
 
   .main-content {
-    padding: 120px 20px 20px;
+    padding: 200px 20px 20px;
   }
 
   .section-header h2 {

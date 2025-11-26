@@ -4,58 +4,21 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f0f4fa 0%, #e6f0ff 100%);
-    min-height: 100vh;
-    padding: 20px;
-}
-
+/* Game container styles - header removed, using shared calcstyles.css header */
 .game-container {
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Header */
-.game-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    padding: 20px 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-}
-
-.game-header h1 {
-    font-size: 28px;
-    color: #2A4D69;
-    margin-bottom: 5px;
-}
-
-.subtitle {
-    font-size: 14px;
-    color: #666;
-}
-
-.btn-home {
-    background: #2A4D69;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 10px;
+/* Game-specific subtitle for formula builder page */
+.main-content .game-container .subtitle {
     font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-family: 'Poppins', sans-serif;
+    color: #666;
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-.btn-home:hover {
-    background: #1e3a52;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(42, 77, 105, 0.3);
-}
+/* Body styles handled by calcstyles.css - no need to override */
 
 /* Screen Management */
 .screen {

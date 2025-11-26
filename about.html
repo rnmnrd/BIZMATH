@@ -5,16 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | BIZMATH</title>
   <link rel="icon" type="image/png" href="images/favicon.png">
-  <link rel="stylesheet" href="link.css">
+
+  <!-- load shared site styles (calcstyles only to match calculator.html and quiz pages) -->
+  <link rel="stylesheet" href="calcstyles.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Fix: Dynamic header height for proper spacing */
-    :root {
-      --header-height: 120px; /* Default - updated by JavaScript */
-      --content-padding: calc(var(--header-height) + 2rem);
-    }
+    /* CSS variables removed - using shared variables from calcstyles.css to match calculator.html */
 
     body {
       background: #e6f0ff;
@@ -23,44 +22,9 @@
       padding: 0;
     }
     
-  header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: linear-gradient(135deg, #004aad, #0066dd);
-  color: #fff;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 30px;
-  box-sizing: border-box;
-  z-index: 900; /* Increased to match main site */
-  box-shadow: 0 4px 12px rgba(0, 74, 173, 0.3);
-}
+/* Header styles removed - using shared styles from calcstyles.css to match calculator.html */
     
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0 0 10px 0;
-      font-weight: 700;
-      color: #ffffff; /* White color for title */
-    }
-    
-    header p {
-      font-size: 1.1rem;
-      margin: 0;
-      opacity: 0.95;
-    }
-    
-    .main-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding-top: var(--content-padding); /* Dynamic padding based on header height */
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-bottom: 40px;
-    }
+    /* Main content styles removed - using shared styles from calcstyles.css to match calculator.html */
     
     .about-card {
       background: white;
@@ -152,83 +116,28 @@
       margin-top: 40px;
       flex-wrap: wrap;
     }
+/* Header-left and h1 styles removed - using shared styles from calcstyles.css to match calculator.html */
+
+/* Header-nav styles removed - using shared styles from calcstyles.css to match calculator.html */
+    /* Button styles removed - using shared styles from calcstyles.css for consistency */
     
-    /* Button styling matching main site */
-.main-btn {
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
-  color: #fff;
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-family: 'Poppins', Arial, sans-serif;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+    /* Responsive adjustments removed - using shared styles from calcstyles.css to match calculator.html */
 
-.main-btn:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.2));
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-    
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      :root {
-        --content-padding: calc(var(--header-height) + 1.5rem);
-      }
-
-      header {
-        padding: 15px 20px;
-      }
-
-      header h1 {
-        font-size: 2rem;
-      }
-      
-      header p {
-        font-size: 1rem;
-      }
-      
-      .about-card h2 {
-        font-size: 1.5rem;
-      }
-      
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .main-btn {
-        padding: 10px 20px;
-        font-size: 0.95rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      :root {
-        --content-padding: calc(var(--header-height) + 2rem);
-      }
-
-      header {
-        padding: 12px 15px;
-      }
-
-      header h1 {
-        font-size: 1.6rem;
-      }
-
-      header p {
-        font-size: 0.9rem;
-      }
-    }
+  /* Button override styles removed - using shared styles from calcstyles.css for consistency */
   </style>
 </head>
 <body>
   <header>
-    <h1>ℹ️ About BIZMATH</h1>
-    <p>Website for Developing Grade 11 Learners' Understanding of Basic Business Mathematics</p>
+    <div class="header-left">
+      <h1>BIZMATH</h1>
+    </div>
+    <nav class="header-nav">
+            <a href="BIZMATH.html"><button class="main-btn">🏠 Home</button></a>
+            <a href="about.html"><button class="main-btn">ℹ️ About</button></a>
+            <a href="calculator.html"><button class="main-btn">🧮 Calculator</button></a>
+            <a href="formula_builder.html"><button class="main-btn">🧩 Games</button></a>
+            <a href="quiz.html"><button class="main-btn">🎯 Quiz Center</button></a>
+    </nav>
   </header>
 
   <main class="main-content">
@@ -323,14 +232,6 @@
         <li>Agudo, B. J. B. (2021). General Mathematics Quarter 2 – Module 10: Market Indices for Stocks and Bonds. Department of Education.</li>
         <li>Queaño, R. M. R. (2020). General Mathematics Quarter 2 – Module 11: Business and Consumer Loans. Department of Education.</li>
         <li>Quitain, B. A. (2021). General Mathematics Quarter 2 – Module 12: Solving Problems on Business and Consumer Loans. Department of Education.</li>
-    </div>
-
-
-
-    <!-- Navigation -->
-    <div class="nav-buttons">
-      <a class="main-btn" href="BIZMATH.html">🏠 Home</a>
-      <a class="main-btn" href="calculator.html">🧮 Calculator</a>
     </div>
 
   </main>

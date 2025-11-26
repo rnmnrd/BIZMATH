@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 /* ========== ROOT & GLOBAL STYLES ========== */
-/* Fix: Prevent Sidebar Overlap on Mobile/Tablet */
 :root {
   --header-height: 80px; /* Default - will be updated by JavaScript */
   --sidebar-padding: calc(var(--header-height) + 1rem);

@@ -488,6 +488,20 @@ function resetCalculator() {
     currentGRESAStep: 0,
     gresaSteps: ['given', 'required', 'equation', 'solution', 'answer']
   };
+  
+  // Reset Next Step button visual state
+  const nextBtn = document.getElementById('next-step-btn');
+  if (nextBtn) {
+    nextBtn.disabled = false;
+    nextBtn.style.opacity = '1';
+    nextBtn.style.cursor = 'pointer';
+    nextBtn.textContent = 'Next Step →';
+    nextBtn.style.display = 'none'; // Hide until we reach solution step
+  }
+  
+  // Hide restart button
+  document.getElementById('restart-btn').style.display = 'none';
+  
   showBlock(1);
 }
 

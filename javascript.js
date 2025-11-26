@@ -1,6 +1,3 @@
-/* ========== DYNAMIC HEADER HEIGHT CALCULATION ========== */
-// Automatically measures header height and updates CSS variable
-// This ensures sidebar always starts below the header on all devices
 function updateHeaderHeight() {
   const header = document.querySelector('header');
   if (header) {
@@ -10,17 +7,14 @@ function updateHeaderHeight() {
   }
 }
 
-// Run on page load
 document.addEventListener('DOMContentLoaded', updateHeaderHeight);
 
-// Update on window resize (handles orientation changes and button wrapping)
 let resizeTimer;
 window.addEventListener('resize', function() {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(updateHeaderHeight, 100); // Debounce for performance
+  resizeTimer = setTimeout(updateHeaderHeight, 100);
 });
 
-/* ========== SIDEBAR TOGGLE ========== */
 function toggleSidebar() {
   const sidebar = document.querySelector('.sidebar');
   sidebar.classList.toggle('active');
@@ -34,15 +28,12 @@ function toggleSidebar() {
     }
   });
 document.addEventListener("DOMContentLoaded", function () {
-    // Only run this on screens smaller than 768px (phones)
     if (window.innerWidth < 768) {
       const tables = document.querySelectorAll("table");
 
       tables.forEach((table) => {
-        // Skip if already wrapped
         if (table.parentElement.classList.contains("table-wrapper")) return;
 
-        // Create a temporary clone to measure natural width
         const clone = table.cloneNode(true);
         clone.style.visibility = "hidden";
         clone.style.position = "absolute";
