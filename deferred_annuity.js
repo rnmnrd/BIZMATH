@@ -198,8 +198,12 @@ function displayGRESA() {
   givenHTML += '<strong>Term (t):</strong> ' + formatValue('t', inputs.t) + '<br>';
   givenHTML += '<strong>Period of Deferral (k):</strong> ' + formatValue('k', inputs.k) + '<br>';
   givenHTML += '<br><em>Computed values:</em><br>';
-  givenHTML += '<strong>Rate per period (i):</strong> ' + formatValue('i', computedValuesRounded.i) + ' <em>(i = r/m)</em><br>';
-  givenHTML += '<strong>Total payments (n):</strong> ' + formatValue('n', computedValuesRounded.n) + ' <em>(n = m × t)</em><br>';
+  if (computedValuesRounded.i !== undefined) {
+    givenHTML += '<strong>Rate per period (i):</strong> ' + formatValue('i', computedValuesRounded.i) + ' <em>(i = r/m)</em><br>';
+  }
+  if (computedValuesRounded.n !== undefined) {
+    givenHTML += '<strong>Total payments (n):</strong> ' + formatValue('n', computedValuesRounded.n) + ' <em>(n = m × t)</em><br>';
+  }
   
   document.getElementById('gresa-given').innerHTML = givenHTML;
   

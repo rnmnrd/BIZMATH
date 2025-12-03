@@ -343,15 +343,19 @@ function displayGRESA() {
     givenHTML += `<strong>${variableInfo[varKey].name} (${varKey}):</strong> ${formatValue(varKey, inputs[varKey])}<br>`;
   });
   
-  // Add computed values
+  // Add computed values (with error checking)
   givenHTML += `<br><em>Computed values:</em><br>`;
-  givenHTML += `<strong>Equivalent Rate per Payment Interval (i):</strong> ${formatDecimal(computedValues.i)}<br>`;
-  givenHTML += `<em>i = (1 + r/m₂)^(m₂/m₁) - 1</em><br>`;
-  givenHTML += `<em>i = (1 + ${formatDecimal(inputs.r)}/${formatDecimal(inputs.m2)})^(${formatDecimal(inputs.m2)}/${formatDecimal(inputs.m1)}) - 1</em><br>`;
-  givenHTML += `<em>i = ${formatDecimal(computedValues.i)}</em><br><br>`;
+  if (computedValues.i !== undefined) {
+    givenHTML += `<strong>Equivalent Rate per Payment Interval (i):</strong> ${formatDecimal(computedValues.i)}<br>`;
+    givenHTML += `<em>i = (1 + r/m₂)^(m₂/m₁) - 1</em><br>`;
+    givenHTML += `<em>i = (1 + ${formatDecimal(inputs.r)}/${formatDecimal(inputs.m2)})^(${formatDecimal(inputs.m2)}/${formatDecimal(inputs.m1)}) - 1</em><br>`;
+    givenHTML += `<em>i = ${formatDecimal(computedValues.i)}</em><br><br>`;
+  }
   
-  givenHTML += `<strong>Total Number of Payment Intervals (n):</strong> ${formatDecimal(computedValues.n)}<br>`;
-  givenHTML += `<em>n = m₁ × t = ${formatDecimal(inputs.m1)} × ${formatDecimal(inputs.t)} = ${formatDecimal(computedValues.n)}</em><br>`;
+  if (computedValues.n !== undefined) {
+    givenHTML += `<strong>Total Number of Payment Intervals (n):</strong> ${formatDecimal(computedValues.n)}<br>`;
+    givenHTML += `<em>n = m₁ × t = ${formatDecimal(inputs.m1)} × ${formatDecimal(inputs.t)} = ${formatDecimal(computedValues.n)}</em><br>`;
+  }
   
   document.getElementById('gresa-given').innerHTML = givenHTML;
   
@@ -561,6 +565,7 @@ function resetCalculator() {
     selectedFormula: null,
     inputs: {},
     computedValues: {},
+    computedValuesRounded: {},
     result: null,
     currentGRESAStep: 0,
     gresaSteps: ['given', 'required', 'equation', 'solution', 'answer']

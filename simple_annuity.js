@@ -272,10 +272,14 @@ function displayGRESA() {
     givenHTML += `<strong>${variableInfo[varKey].name} (${varKey}):</strong> ${formatValue(varKey, inputs[varKey])}<br>`;
   });
   
-  // Add computed values
+  // Add computed values (with error checking)
   givenHTML += `<br><em>Computed values:</em><br>`;
-  givenHTML += `<strong>Interest Rate per Period (i):</strong> ${formatDecimal(computedValues.i)} <em>(i = r/m = ${formatDecimal(inputs.r)}/${formatDecimal(inputs.m)})</em><br>`;
-  givenHTML += `<strong>Number of Periods (n):</strong> ${formatDecimal(computedValues.n)} <em>(n = m×t = ${formatDecimal(inputs.m)}×${formatDecimal(inputs.t)})</em><br>`;
+  if (computedValues.i !== undefined) {
+    givenHTML += `<strong>Interest Rate per Period (i):</strong> ${formatDecimal(computedValues.i)} <em>(i = r/m = ${formatDecimal(inputs.r)}/${formatDecimal(inputs.m)})</em><br>`;
+  }
+  if (computedValues.n !== undefined) {
+    givenHTML += `<strong>Number of Periods (n):</strong> ${formatDecimal(computedValues.n)} <em>(n = m×t = ${formatDecimal(inputs.m)}×${formatDecimal(inputs.t)})</em><br>`;
+  }
   
   document.getElementById('gresa-given').innerHTML = givenHTML;
   
